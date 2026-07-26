@@ -324,6 +324,19 @@
         }
 
         /* Menu Section */
+
+        .allergen-badge {
+        background-color: #f0e6d2;
+        color: #c4953c;
+        font-size: 0.75rem;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        margin-left: 0.5rem;
+        font-family: sans-serif;
+        vertical-align: middle;
+        cursor: help;
+}
+
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -790,89 +803,619 @@
         </div>
     </section>
 
+   
     <!-- Menu Section -->
-    <section id="menu">
-        <div class="section-header">
-            <h2 class="section-title">Our Menu</h2>
-            <p class="section-subtitle">Explore a selection of our popular offerings</p>
+    <section id="menu-section" style="padding: 4rem 2rem; background-color: #faf9f6; color: #2d2d2d;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-size: 2.5rem; color: #c4953c; margin-bottom: 0.5rem; font-family: serif;">Our Authentic Menu</h2>
+            <p style="opacity: 0.7; font-style: italic;">Savor the traditional flavors of Bombay Palace Cork</p>
         </div>
-        <div class="menu-grid">
-            <div class="menu-category">
-                <h3>🍗 Non-Vegetarian</h3>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Butter Chicken</span>
-                        <span class="menu-item-price">€14.99</span>
-                    </div>
-                    <div class="menu-item-desc">Tender chicken in a rich, buttery tomato sauce</div>
+        
+
+        <!-- Sticky Nav Filter Tags (All Dishes Removed) -->
+        <div class="menu-tabs" style="display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 1rem; margin-bottom: 2rem; justify-content: start; white-space: nowrap;">
+            <button class="menu-tab-btn active" onclick="filterMenu('appetizers')">Appetizers</button>
+            <button class="menu-tab-btn" onclick="filterMenu('tandoori')">Tandoori</button>
+            <button class="menu-tab-btn" onclick="filterMenu('murg')">Murg (Chicken)</button>
+            <button class="menu-tab-btn" onclick="filterMenu('gosht')">Gosht (Lamb)</button>
+            <button class="menu-tab-btn" onclick="filterMenu('samunder')">Samunder (Seafood)</button>
+            <button class="menu-tab-btn" onclick="filterMenu('chefs')">Chef's Specials</button>
+            <button class="menu-tab-btn" onclick="filterMenu('biryani')">Biryani</button>
+            <button class="menu-tab-btn" onclick="filterMenu('vegetable')">Vegetable Dishes</button>
+            <button class="menu-tab-btn" onclick="filterMenu('sundries')">Sundries</button>
+        </div>
+
+        <!-- Dynamic Menu Items Grid Layout -->
+        <div id="menu-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            
+            <!-- ==================== APPETIZERS ==================== -->
+            <div class="menu-item appetizers" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Punjabi Samosa Chaat 
+                        <span class="allergen-badge" title="Gluten">G</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€9.95</span>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Lamb Rogan Josh</span>
-                        <span class="menu-item-price">€16.99</span>
-                    </div>
-                    <div class="menu-item-desc">Slow-cooked lamb with aromatic Kashmiri spices</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Prawn Tikka Masala</span>
-                        <span class="menu-item-price">€16.50</span>
-                    </div>
-                    <div class="menu-item-desc">Succulent prawns served in a lightly spiced cream sauce</div>
-                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Crisp flour patties filled with potatoes, herbs and peas.</p>
             </div>
 
-            <div class="menu-category">
-                <h3>🥬 Vegetarian</h3>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Paneer Tikka Masala</span>
-                        <span class="menu-item-price">€13.99</span>
-                    </div>
-                    <div class="menu-item-desc">Cottage cheese cubes simmered in spiced tomato gravy</div>
+            <div class="menu-item appetizers" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Onion Bhajee
+                        <span class="allergen-badge" title="Gluten">G</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€7.95</span>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Aloo Gobi</span>
-                        <span class="menu-item-price">€11.99</span>
-                    </div>
-                    <div class="menu-item-desc">Fresh cauliflower and potatoes sauteed with cumin & ginger</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Dal Makhani</span>
-                        <span class="menu-item-price">€10.99</span>
-                    </div>
-                    <div class="menu-item-desc">Slow-cooked black lentils finished with cream and butter</div>
-                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Onions seasoned with special herbs, battered and fried.</p>
             </div>
 
-            <div class="menu-category">
-                <h3>🥘 Rice & Breads</h3>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Special Biryani</span>
-                        <span class="menu-item-price">€13.99</span>
-                    </div>
-                    <div class="menu-item-desc">Fragrant basmati rice cooked with herbs and fresh spices</div>
+            <div class="menu-item appetizers" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Seekh Kebab Lahore
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€9.95</span>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Garlic & Coriander Naan</span>
-                        <span class="menu-item-price">€3.99</span>
-                    </div>
-                    <div class="menu-item-desc">Freshly baked in the clay oven with garlic butter</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Tandoori Roti</span>
-                        <span class="menu-item-price">€2.99</span>
-                    </div>
-                    <div class="menu-item-desc">Whole wheat flatbread baked in the tandoor</div>
-                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Minced lamb delicately seasoned and cooked in tandoor.</p>
             </div>
+
+            <div class="menu-item appetizers" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Assorted Indian Snacks
+                        <span class="allergen-badge" title="Gluten">G</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€15.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Mixture of vegetable samosa onion bhajee bajias and chicken pakora.</p>
+            </div>
+
+            <div class="menu-item appetizers" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Aloo Chaat
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€9.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Crisp fried potato cubes tossed with spices and chutneys.</p>
+            </div>
+
+            <div class="menu-item appetizers" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Goan Cafreal Prawn / Chicken Tikka
+                        <span class="allergen-badge" title="Crustaceans">C</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€19.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Served with a vibrant tomato chutney.</p>
+            </div>
+
+            <div class="menu-item appetizers" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Chicken Pakora
+                        <span class="allergen-badge" title="Gluten">G</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€8.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Tender juicy chicken mixed with herbs, battered and fried.</p>
+            </div>
+
+            <!-- ==================== TANDOORI ==================== -->
+            <div class="menu-item tandoori" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Tandoori Chicken
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€19.90</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Juicy chicken marinated overnight and cooked in clay oven. Served on sizzling platter with salad.</p>
+            </div>
+
+            <div class="menu-item tandoori" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Chicken Shashlik Kebab
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€28.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Breast of Chicken Marinated in Mild Spice and cooked in clay oven.</p>
+            </div>
+
+            <!-- ==================== MURG (CHICKEN) ==================== -->
+            <div class="menu-item murg" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Murg Makhni Punjab
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€19.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Diced boneless chicken breasts cooked in tandoor, served with rich butter cream tomato sauce.</p>
+            </div>
+
+            <div class="menu-item murg" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Chicken Tikka Masala
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€19.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">BBQ'd boneless chicken pieces cooked with capsicum, served in thick exotic sauce.</p>
+            </div>
+
+            <div class="menu-item murg" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Chicken Korma
+                        <span class="allergen-badge" title="Dairy">D</span>
+                        <span class="allergen-badge" title="Nuts">N</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€19.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Boneless chicken pieces cooked and simmered in a mild creamy sauce.</p>
+            </div>
+
+            <div class="menu-item murg" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Chilli Chicken Masala</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€19.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color:red;">🌶️ Med/Hot</span> - Diced spring chicken cooked with fresh green chillies and spices.</p>
+            </div>
+
+            <div class="menu-item murg" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Chicken Madras</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€19.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color:red;">🌶️ Med/Hot</span> - Diced spring chicken cooked with spices and chili.</p>
+            </div>
+
+            <div class="menu-item murg" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Balti Chicken</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€18.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Diced spring chicken cooked with herbs and spices.</p>
+            </div>
+
+            <div class="menu-item murg" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Chicken Jal Frazi</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€19.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color:red;">🌶️ Med/Hot</span> - Chicken cooked with capsicum, onion, tomatoes with ginger.</p>
+            </div>
+
+            <div class="menu-item murg" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Chicken Butter Masala
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€19.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Chicken cooked with fresh onion, green peas, and mild butter sauce.</p>
+            </div>
+
+            <!-- ==================== GOSHT (LAMB) ==================== -->
+            <div class="menu-item gosht" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Lamb Korma
+                        <span class="allergen-badge" title="Dairy">D</span>
+                        <span class="allergen-badge" title="Nuts">N</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€22.35</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Diced lamb pieces cooked in a mild creamy sauce.</p>
+            </div>
+
+            <div class="menu-item gosht" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Lamb Chilli Masala</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€22.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color:red;">🌶️ Med/Hot</span> - Tender lamb pieces cooked with fresh green chillies and spices.</p>
+            </div>
+
+            <div class="menu-item gosht" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Rogan Josh</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€22.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Diced lamb pieces cooked with tomatoes and seasoned with rich herbs.</p>
+            </div>
+
+            <div class="menu-item gosht" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Saag Gosht</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€23.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Selected lamb pieces cooked in spinach and small onions.</p>
+            </div>
+
+            <div class="menu-item gosht" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Lamb Madras</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€22.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color:red;">🌶️ Med/Hot</span> - Diced spring lamb cooked with spices and chili.</p>
+            </div>
+
+            <div class="menu-item gosht" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Lamb Jal Frazi</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€23.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color:red;">🌶️ Med/Hot</span> - Lamb cooked with chillies, fresh ginger, onion, and capsicum.</p>
+            </div>
+
+            <div class="menu-item gosht" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Lamb Vindaloo</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€23.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color:red;">🔥🔥 Very Hot</span> - Lamb cooked with black pepper, lemon, and hot chili paste.</p>
+            </div>
+
+            <!-- ==================== SAMUNDER (SEAFOOD) ==================== -->
+            <div class="menu-item samunder" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Prawn Bhuna Masala
+                        <span class="allergen-badge" title="Crustaceans">C</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€24.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Prawns cooked with capsicum in a sauce, flavoured with herbs.</p>
+            </div>
+
+            <div class="menu-item samunder" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Goan Prawn Curry
+                        <span class="allergen-badge" title="Crustaceans">C</span>
+                        <span class="allergen-badge" title="Mustard">M</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€24.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Prawns cooked in a special sauce and tomatoes.</p>
+            </div>
+
+            <div class="menu-item samunder" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Jhinga Tikka Masala
+                        <span class="allergen-badge" title="Crustaceans">C</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€26.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Jumbo prawns marinated and cooked in charcoal oven and sauteed with capsicum, onions, garlic and fresh ginger in a thick sauce.</p>
+            </div>
+
+            <!-- ==================== CHEF'S RECOMMENDATION ==================== -->
+            <div class="menu-item chefs" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Lamb Bhuna Delhi</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€24.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Diced tender lamb cooked with capsicum and fresh ginger in a thick sauce.</p>
+            </div>
+
+            <div class="menu-item chefs" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Chicken Malai Kashmir
+                        <span class="allergen-badge" title="Dairy">D</span>
+                        <span class="allergen-badge" title="Nuts">N</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€20.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Juicy spring chicken cooked in a rich creamy sauce with herbs and almonds flavoured with coconut.</p>
+            </div>
+
+            <div class="menu-item chefs" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Paneer Makhni
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€18.90</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color: green;">● Veg</span> - Home made cottage cheese blended with butter in a sweet and sour creamy sauce.</p>
+            </div>
+
+            <div class="menu-item chefs" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Prawn Dil Ruba
+                        <span class="allergen-badge" title="Crustaceans">C</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                        <span class="allergen-badge" title="Nuts">N</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€23.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Prawns cooked in a rich creamy sauce flavoured with almonds, coconut and herbs.</p>
+            </div>
+
+            <div class="menu-item chefs" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Shahi Patiala Masala Lamb Chop</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€29.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">Served with pickled mango, ginger & onion.</p>
+            </div>
+
+            <!-- ==================== BIRYANI DISHES ==================== -->
+            <div class="menu-item biryani" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Chicken Biryani
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€24.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">The finest basmati rice cooked with chicken and authentic spices, garnished with salad, served with curry sauce.</p>
+            </div>
+
+            <div class="menu-item biryani" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Masaledar Lamb Shank Biryani</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€29.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">The finest basmati rice cooked with tender lamb shank and authentic spices, garnished with salad.</p>
+            </div>
+
+            <div class="menu-item biryani" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Palace Mixed Biryani
+                        <span class="allergen-badge" title="Crustaceans">C</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€29.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;">A mixture of lamb, chicken, prawns, fresh vegetables and potatoes cooked with finest basmati rice.</p>
+            </div>
+
+            <!-- ==================== VEGETABLE DISHES ==================== -->
+            <div class="menu-item vegetable" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Vegetable Korma
+                        <span class="allergen-badge" title="Dairy">D</span>
+                        <span class="allergen-badge" title="Nuts">N</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€17.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color: green;">● Veg</span> - Fresh vegetables cooked with special herbs, cream in a mild sauce.</p>
+            </div>
+
+            <div class="menu-item vegetable" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Amritsari Chole</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€16.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color: green;">● Veg</span> - Chick peas cooked with tomatoes and home made Punjabi medium sauce.</p>
+            </div>
+
+            <div class="menu-item vegetable" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Sag Paneer
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€18.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color: green;">● Veg</span> - Chunks of homemade cottage cheese blended with spinach and tomatoes in a medium spicy sauce.</p>
+            </div>
+
+            <div class="menu-item vegetable" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Shahi Paneer
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€18.90</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color: green;">● Veg</span> - Homemade cottage cheese cooked in medium creamy sauce blended with tomatoes and herbs.</p>
+            </div>
+
+            <div class="menu-item vegetable" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Dal Special</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€16.85</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color: green;">● Veg</span> - Lentils cooked with cumin seeds tomatoes and seasoned with onion and herbs.</p>
+            </div>
+
+            <div class="menu-item vegetable" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">Bombay Jeera Aloo</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€16.90</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color: green;">● Veg</span> - Potatoes cooked with green chillies, herbs and spices in sauce.</p>
+            </div>
+
+            <div class="menu-item vegetable" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0; font-size: 1.2rem; font-weight: bold;">
+                        Bhindi / Dahi Kadhi Pakora
+                        <span class="allergen-badge" title="Gluten">G</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€18.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.7; line-height: 1.4;"><span style="color: green;">● Veg</span> - Traditional preparation of okra or yogurt pakora curry.</p>
+            </div>
+
+            <!-- ==================== SUNDRIES ==================== -->
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">Pilau Rice</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€3.50</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Basmati rice steamed in herbs.</p>
+            </div>
+
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">Boiled Rice</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€3.50</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Plain basmati rice.</p>
+            </div>
+
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">
+                        Special Pilau Rice
+                        <span class="allergen-badge" title="Eggs">E</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€7.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Egg, peas, mushroom.</p>
+            </div>
+
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">Chips</h3>
+                    <span style="font-weight: bold; color: #c4953c;">€4.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Shredded fried potatoes.</p>
+            </div>
+
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">
+                        Nan
+                        <span class="allergen-badge" title="Gluten">G</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€3.50</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Leavened flour bread moisturised with butter.</p>
+            </div>
+
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">
+                        Keema Nan
+                        <span class="allergen-badge" title="Gluten">G</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€6.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Leavened flour bread stuffed with cooked minced lamb.</p>
+            </div>
+
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">
+                        Peshawari Nan
+                        <span class="allergen-badge" title="Gluten">G</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                        <span class="allergen-badge" title="Nuts">N</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€6.85</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Leavened bread stuffed with almonds, nuts and sultanas.</p>
+            </div>
+
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">
+                        Garlic Nan
+                        <span class="allergen-badge" title="Gluten">G</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€5.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Leavened bread flavoured with garlic and topped with butter.</p>
+            </div>
+
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">
+                        Cheese & Onion Nan
+                        <span class="allergen-badge" title="Gluten">G</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€5.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Leavened flour bread stuffed with cheese and onion.</p>
+            </div>
+
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">
+                        Onion Coriander Nan
+                        <span class="allergen-badge" title="Gluten">G</span>
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€5.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Leavened flour bread stuffed with onion and coriander.</p>
+            </div>
+
+            <div class="menu-item sundries" style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem;">
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: bold;">
+                        Raita
+                        <span class="allergen-badge" title="Dairy">D</span>
+                    </h3>
+                    <span style="font-weight: bold; color: #c4953c;">€4.95</span>
+                </div>
+                <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Home made yogurt with onion, tomatoes, coriander and spices.</p>
+            </div>
+
         </div>
+
+        <!-- Allergen Key Block -->
+        <div style="text-align: center; margin-bottom: 2rem; font-size: 0.85rem; opacity: 0.8; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+            <strong>Allergen Key:</strong> 
+            <span style="margin: 0 0.5rem;"><strong>[G]</strong> Gluten</span> | 
+            <span style="margin: 0 0.5rem;"><strong>[D]</strong> Dairy</span> | 
+            <span style="margin: 0 0.5rem;"><strong>[N]</strong> Nuts</span> | 
+            <span style="margin: 0 0.5rem;"><strong>[E]</strong> Eggs</span> | 
+            <span style="margin: 0 0.5rem;"><strong>[F]</strong> Fish</span> | 
+            <span style="margin: 0 0.5rem;"><strong>[M]</strong> Mustard</span> |
+            <span style="margin: 0 0.5rem;"><strong>[C]</strong> Crustaceans</span>
+        </div>
+
     </section>
+
+    <!-- Add matching tab button styles to your existing internal <style> block -->
+    <style>
+        .menu-tab-btn {
+            background: #ece9e2;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #555;
+            transition: all 0.2s ease-in-out;
+        }
+        .menu-tab-btn:hover {
+            background: #e2d9c5;
+        }
+        .menu-tab-btn.active {
+            background: #c4953c;
+            color: white;
+        }
+    </style>
 
     <!-- Voucher Section -->
     <section id="vouchers">
@@ -1123,6 +1666,45 @@
             menu.classList.toggle('active');
         }
 
+        
+        function filterMenu(category, event) {
+            // 1. Handle Tab Highlighting
+            const tabs = document.querySelectorAll('.menu-tab-btn');
+            tabs.forEach(tab => {
+                // Remove active states from all tabs
+                tab.classList.remove('active');
+                tab.style.backgroundColor = '';
+                tab.style.color = '';
+            });
+
+            // Find the correct tab button to highlight
+            let activeTab = null;
+            if (event && event.target) {
+                activeTab = event.target;
+            } else {
+                // Fallback for page-load: find the tab based on its onclick attribute or text
+                activeTab = Array.from(tabs).find(tab => 
+                    tab.getAttribute('onclick').includes(category) || 
+                    tab.textContent.trim().toLowerCase() === category.toLowerCase()
+                );
+            }
+
+            // Apply the active state to the correct tab
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+
+            // 2. Handle Dish Filtering
+            const allItems = document.querySelectorAll('.menu-item');
+            allItems.forEach(item => {
+                if (item.classList.contains(category)) {
+                    item.style.display = 'block'; // Shows matching dishes
+                } else {
+                    item.style.display = 'none';  // Hides all others
+                }
+            });
+        }
+
         function smoothScrollTo(id) {
             const element = document.getElementById(id);
             if (element) {
@@ -1245,6 +1827,9 @@
             const today = new Date().toISOString().split('T')[0];
             dateInput.setAttribute('min', today);
         }
+
+        // Safely initializes the menu to show only appetizers and highlight the tab
+        filterMenu('appetizers');
     </script>
 </body>
 </html>
