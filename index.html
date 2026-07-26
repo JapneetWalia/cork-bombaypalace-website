@@ -1073,33 +1073,36 @@
      
         // Handle Reservation Form Submission
         function handleReservation(event) {
-            event.preventDefault(); // Stop page from hard reloading
+            event.preventDefault(); // Stop the default immediate page reload
             
             const form = event.target;
             const alertBox = document.getElementById('reservationAlert');
             
-            // Submit the data to FormSubmit in the background
+            // Send data to Formspree using standard browser fetch
             fetch(form.action, {
                 method: form.method,
                 body: new FormData(form),
                 headers: {
                     'Accept': 'application/json'
                 }
-            }).then(response => {
+            })
+            .then(response => {
                 if (response.ok) {
-                    // Show success message if everything went through
+                    // Show our custom green success message
                     alertBox.style.display = 'block';
                     form.reset();
                     
-                    // Hide alert box after 5 seconds
+                    // Hide the success alert box after 5 seconds
                     setTimeout(() => {
                         alertBox.style.display = 'none';
                     }, 5000);
                 } else {
-                    alert("Oops! There was a problem submitting your reservation. Please call us directly.");
+                    alert("Oops! There was a problem submitting your reservation. Please try again.");
                 }
-            }).catch(error => {
-                alert("Oops! There was a network error. Please try again or call us.");
+            })
+            .catch(error => {
+                // If fetch fails completely, fallback to a standard HTML submission so it works anyway
+                form.submit();
             });
         }
 
