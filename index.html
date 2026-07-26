@@ -978,9 +978,10 @@
                         <div class="form-group">
                             <label for="res-time-hours">Time *</label>
                             <div style="display: flex; gap: 0.5rem;">
-                                <!-- Controlled Hours -->
+                                <!-- Controlled Hours Expanded to include 3 PM -->
                                 <select id="res-time-hours" name="time_hour" required>
                                     <option value="">Hour</option>
+                                    <option value="15">15 (3 PM)</option>
                                     <option value="16">16 (4 PM)</option>
                                     <option value="17">17 (5 PM)</option>
                                     <option value="18">18 (6 PM)</option>
@@ -1064,7 +1065,11 @@
             <div class="contact-card">
                 <div class="contact-icon">📞</div>
                 <h3>Contact & Hours</h3>
-                <p>+353 (0)21 123 4567<br>Sun - Thu: 4:30 PM - 10:30 PM</p>
+                <p>
+                    +353 (0)21 427 3366<br>
+                    Sun - Thu: 4:30 PM - 10:30 PM<br>
+                    Fri - Sat: 3:30 PM - 10:30 PM
+                </p>
             </div>
             <div class="contact-card">
                 <div class="contact-icon">📧</div>
@@ -1129,6 +1134,7 @@
         // Automatically attach the listener when the page loads
         document.addEventListener("DOMContentLoaded", function() {
             const reservationForm = document.getElementById('res-form');
+            const dateInput = document.getElementById('res-date');
             const hourSelect = document.getElementById('res-time-hours');
             const minSelect = document.getElementById('res-time-mins');
             const timeWarning = document.getElementById('time-warning');
@@ -1137,18 +1143,46 @@
                 reservationForm.addEventListener('submit', function(event) {
                     event.preventDefault();
                     
-                    // Core Business Logic Validation: Block anything before 16:30 or after 22:00
-                    if (hourSelect.value === "16" && (minSelect.value === "00" || minSelect.value === "15")) {
-                        timeWarning.style.display = "block";
-                        return; // Cease submission
+                    // Get the selected day of the week (0 = Sunday, 5 = Friday, 6 = Saturday, etc.)
+                    const chosenDate = new Date(dateInput.value);
+                    const dayOfWeek = chosenDate.getDay(); 
+                    
+                    const selectedHour = hourSelect.value;
+                    const selectedMin = minSelect.value;
+
+                    // Clear previous warnings
+                    timeWarning.style.display = "none";
+
+                    // CASE 1: FRIDAY AND SATURDAY LOGIC (Open at 3:30 PM)
+                    if (dayOfWeek === 5 || dayOfWeek === 6) {
+                        if (selectedHour === "15" && (selectedMin === "00" || selectedMin === "15")) {
+                            timeWarning.innerText = "On Fridays and Saturdays, we open at 15:30. Please adjust your minutes.";
+                            timeWarning.style.display = "block";
+                            return;
+                        }
+                    } 
+                    // CASE 2: SUNDAY TO THURSDAY LOGIC (Open at 4:30 PM)
+                    else {
+                        if (selectedHour === "15") {
+                            timeWarning.innerText = "On this day, we open at 16:30. Please choose a later hour.";
+                            timeWarning.style.display = "block";
+                            return;
+                        }
+                        if (selectedHour === "16" && (selectedMin === "00" || selectedMin === "15")) {
+                            timeWarning.innerText = "On this day, we open at 16:30. Please adjust your minutes.";
+                            timeWarning.style.display = "block";
+                            return;
+                        }
                     }
-                    if (hourSelect.value === "22" && minSelect.value !== "00") {
-                        timeWarning.innerText = "Our final sitting is at 22:00. Please select 00.";
+
+                    // CASE 3: CLOSING TIME LOGIC (Final sitting at 22:30 across all days)
+                    if (selectedHour === "22" && (selectedMin === "45")) {
+                        timeWarning.innerText = "Our final reservation sitting is at 22:30. Please select 00, 15, or 30.";
                         timeWarning.style.display = "block";
                         return;
                     }
-                    timeWarning.style.display = "none";
 
+                    // If it passes all validation loops, send to Formspree
                     const form = event.target;
                     const alertBox = document.getElementById('reservationAlert');
                     const data = new FormData(form);
@@ -1162,7 +1196,6 @@
                         if (response.ok) {
                             alertBox.style.display = 'block';
                             form.reset();
-                            // Reset country code fallback defaults
                             document.getElementById('res-country-code').value = "+353";
                             setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
                         } else {
@@ -1173,12 +1206,11 @@
                 });
             }
 
-            // Set minimum date constraint to current local day
-            const dateInput = document.getElementById('res-date');
             if (dateInput) {
                 dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
             }
         });
+        
 
         function openVoucherModal(amount, type) {
             document.getElementById('voucherModal').classList.add('active');
