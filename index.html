@@ -681,10 +681,13 @@
                 background: var(--secondary);
                 padding: 1.5rem 0;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                /* FIX: Prevents layout collapse overlay blockages */
+                pointer-events: none; 
             }
 
             nav ul.active {
                 display: flex;
+                pointer-events: auto;
             }
 
             .mobile-toggle {
@@ -698,6 +701,7 @@
 
             .form-row {
                 grid-template-columns: 1fr;
+                gap: 0;
             }
 
             section {
@@ -936,7 +940,6 @@
                 <div class="alert alert-success" id="reservationAlert">
                     ✓ Reservation request received! We will confirm your booking shortly.
                 </div>
-                <!-- Updated Form tag to use Formsubmit routing ==== onsubmit="handleReservation(event)"> -->
                 <form action="https://formspree.io/f/mzdnkwep" method="POST" id="res-form" onsubmit="handleReservation(event)"> 
                     <div class="form-group">
                         <label for="res-name">Your Full Name *</label>
@@ -1054,59 +1057,55 @@
     </div>
 
     <script>
-        // Toggle Mobile Navigation
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
             menu.classList.toggle('active');
         }
 
-        // Smooth Scrolling
         function scrollTo(id) {
             const element = document.getElementById(id);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
-            // Close mobile nav on click
             document.getElementById('nav-menu').classList.remove('active');
         }
 
-     
-        // Handle Reservation Form Submission
         function handleReservation(event) {
-            event.preventDefault(); // Stop the default immediate page reload
+            event.preventDefault();
             
             const form = event.target;
             const alertBox = document.getElementById('reservationAlert');
+            const data = new FormData(form);
             
-            // Send data to Formspree using standard browser fetch
+            // Convert plain form fields directly to JSON format for Formspree API processing
+            const object = {};
+            data.forEach((value, key) => object[key] = value);
+            const json = JSON.stringify(object);
+
             fetch(form.action, {
                 method: form.method,
-                body: new FormData(form),
+                body: json,
                 headers: {
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 }
             })
             .then(response => {
                 if (response.ok) {
-                    // Show our custom green success message
                     alertBox.style.display = 'block';
                     form.reset();
-                    
-                    // Hide the success alert box after 5 seconds
                     setTimeout(() => {
                         alertBox.style.display = 'none';
                     }, 5000);
                 } else {
-                    alert("Oops! There was a problem submitting your reservation. Please try again.");
+                    form.submit();
                 }
             })
             .catch(error => {
-                // If fetch fails completely, fallback to a standard HTML submission so it works anyway
                 form.submit();
             });
         }
 
-        // Voucher Modal Actions
         function openVoucherModal(amount, type) {
             document.getElementById('voucherModal').classList.add('active');
             document.getElementById('voucherTitle').textContent = `Purchase €${amount} ${type} Voucher`;
@@ -1128,7 +1127,6 @@
             }, 2500);
         }
 
-        // Close Modal on Overlay Click
         window.onclick = function(event) {
             const modal = document.getElementById('voucherModal');
             if (event.target === modal) {
@@ -1136,7 +1134,6 @@
             }
         }
 
-        // Set minimum reservation date to today
         const dateInput = document.getElementById('res-date');
         if (dateInput) {
             const today = new Date().toISOString().split('T')[0];
