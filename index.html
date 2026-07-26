@@ -1077,7 +1077,8 @@
             if (reservationForm) {
                 reservationForm.addEventListener('submit', function(event) {
                     event.preventDefault(); // Stop page from redirecting
-                    
+                    alert("Form Clicked!"); // <-- ADD THIS LINE TEMPORARILY
+
                     const form = event.target;
                     const alertBox = document.getElementById('reservationAlert');
                     const data = new FormData(form);
