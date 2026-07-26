@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bombay Palace Cork - Authentic Indian Cuisine</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -952,7 +953,20 @@
                         </div>
                         <div class="form-group">
                             <label for="res-phone">Phone Number *</label>
-                            <input type="tel" id="res-phone" name="phone" placeholder="+353 21 123 4567" required>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <!-- Country Code Dropdown -->
+                                <select id="res-country-code" name="country_code" style="width: 35%;" required>
+                                    <option value="+353" selected>🇮🇪 +353 (IE)</option>
+                                    <option value="+44">🇬🇧 +44 (UK)</option>
+                                    <option value="+1">🇺🇸 +1 (US)</option>
+                                    <option value="+61">🇦🇺 +61 (AU)</option>
+                                    <option value="+91">🇮🇳 +91 (IN)</option>
+                                    <option value="+49">🇩🇪 +49 (DE)</option>
+                                    <option value="+33">🇫🇷 +33 (FR)</option>
+                                </select>
+                                <!-- Pure Number Field -->
+                                <input type="tel" id="res-phone" name="phone" placeholder="87 123 4567" style="width: 65%;" required>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -961,8 +975,29 @@
                             <input type="date" id="res-date" name="date" required>
                         </div>
                         <div class="form-group">
-                            <label for="res-time">Time *</label>
-                            <input type="time" id="res-time" name="time" required>
+                            <label for="res-time-hours">Time *</label>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <!-- Controlled Hours -->
+                                <select id="res-time-hours" name="time_hour" required>
+                                    <option value="">Hour</option>
+                                    <option value="16">16 (4 PM)</option>
+                                    <option value="17">17 (5 PM)</option>
+                                    <option value="18">18 (6 PM)</option>
+                                    <option value="19">19 (7 PM)</option>
+                                    <option value="20">20 (8 PM)</option>
+                                    <option value="21">21 (9 PM)</option>
+                                    <option value="22">22 (10 PM)</option>
+                                </select>
+                                <!-- Controlled Minutes -->
+                                <select id="res-time-mins" name="time_minute" required>
+                                    <option value="">Min</option>
+                                    <option value="00">00</option>
+                                    <option value="15">15</option>
+                                    <option value="30">30</option>
+                                    <option value="45">45</option>
+                                </select>
+                            </div>
+                            <small id="time-warning" style="color: #ff4d4d; display: none; font-size: 0.8rem; margin-top: 0.25rem;">We open at 16:30. Please adjust your minutes.</small>
                         </div>
                     </div>
                     <div class="form-row">
@@ -970,12 +1005,27 @@
                             <label for="res-guests">Number of Guests *</label>
                             <select id="res-guests" name="guests" required>
                                 <option value="">Select guests</option>
+                                <!-- Dynamic loop handled below or hardcoded 1 to 20 -->
                                 <option value="1">1 Person</option>
                                 <option value="2">2 People</option>
                                 <option value="3">3 People</option>
                                 <option value="4">4 People</option>
                                 <option value="5">5 People</option>
-                                <option value="6">6+ People</option>
+                                <option value="6">6 People</option>
+                                <option value="7">7 People</option>
+                                <option value="8">8 People</option>
+                                <option value="9">9 People</option>
+                                <option value="10">10 People</option>
+                                <option value="11">11 People</option>
+                                <option value="12">12 People</option>
+                                <option value="13">13 People</option>
+                                <option value="14">14 People</option>
+                                <option value="15">15 People</option>
+                                <option value="16">16 People</option>
+                                <option value="17">17 People</option>
+                                <option value="18">18 People</option>
+                                <option value="19">19 People</option>
+                                <option value="20">20+ People</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1008,7 +1058,7 @@
             <div class="contact-card">
                 <div class="contact-icon">📍</div>
                 <h3>Location</h3>
-                <p>123 St. Patrick's Street<br>Cork City, Ireland</p>
+                <p>14/15 Cook Street<br>Cork City, Ireland</p>
             </div>
             <div class="contact-card">
                 <div class="contact-icon">📞</div>
@@ -1018,7 +1068,12 @@
             <div class="contact-card">
                 <div class="contact-icon">📧</div>
                 <h3>Email Us</h3>
-                <p>soniacork@hotmail.com<br>Fast Response Guaranteed</p>
+                <p>
+                    <a href="mailto:soniacork@hotmail.com" style="color: inherit; text-decoration: underline; font-weight: bold;">
+                        reservations@bombaypalacecork.ie
+                    </a>
+                    <br>Click to Send Message
+                </p>
             </div>
         </div>
     </section>
@@ -1027,7 +1082,7 @@
     <footer>
         <p><strong>🏰 BOMBAY PALACE CORK</strong></p>
         <p>Authentic Indian Cuisine | Cork, Ireland</p>
-        <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">© 2026 Bombay Palace. v1.1 Live Test</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">© 2026 Bombay Palace. v1.0 Live Test</p>
     </footer>
 
     <!-- Voucher Payment Modal -->
@@ -1073,11 +1128,25 @@
         // Automatically attach the listener when the page loads
         document.addEventListener("DOMContentLoaded", function() {
             const reservationForm = document.getElementById('res-form');
-            
+            const hourSelect = document.getElementById('res-time-hours');
+            const minSelect = document.getElementById('res-time-mins');
+            const timeWarning = document.getElementById('time-warning');
+
             if (reservationForm) {
                 reservationForm.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Stop page from redirecting
-                    alert("Form Clicked!"); // <-- ADD THIS LINE TEMPORARILY
+                    event.preventDefault();
+                    
+                    // Core Business Logic Validation: Block anything before 16:30 or after 22:00
+                    if (hourSelect.value === "16" && (minSelect.value === "00" || minSelect.value === "15")) {
+                        timeWarning.style.display = "block";
+                        return; // Cease submission
+                    }
+                    if (hourSelect.value === "22" && minSelect.value !== "00") {
+                        timeWarning.innerText = "Our final sitting is at 22:00. Please select 00.";
+                        timeWarning.style.display = "block";
+                        return;
+                    }
+                    timeWarning.style.display = "none";
 
                     const form = event.target;
                     const alertBox = document.getElementById('reservationAlert');
@@ -1086,26 +1155,27 @@
                     fetch(form.action, {
                         method: form.method,
                         body: data,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                        headers: { 'Accept': 'application/json' }
                     })
                     .then(response => {
                         if (response.ok) {
                             alertBox.style.display = 'block';
                             form.reset();
-                            
-                            setTimeout(() => {
-                                alertBox.style.display = 'none';
-                            }, 5000);
+                            // Reset country code fallback defaults
+                            document.getElementById('res-country-code').value = "+353";
+                            setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
                         } else {
                             alert("Oops! There was a problem saving your booking. Please try again.");
                         }
                     })
-                    .catch(error => {
-                        alert("Network error. Please check your internet connection.");
-                    });
+                    .catch(error => { alert("Network connection error."); });
                 });
+            }
+
+            // Set minimum date constraint to current local day
+            const dateInput = document.getElementById('res-date');
+            if (dateInput) {
+                dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
             }
         });
 
