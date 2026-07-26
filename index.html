@@ -721,16 +721,16 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo" onclick="scrollTo('home')">🏰 BOMBAY PALACE</div>
+        <div class="logo" onclick="smoothScrollTo('home')">🏰 BOMBAY PALACE</div>
         <div class="mobile-toggle" onclick="toggleMenu()">☰</div>
         <ul id="nav-menu">
-            <li><a onclick="scrollTo('home')">Home</a></li>
-            <li><a onclick="scrollTo('about')">About</a></li>
-            <li><a onclick="scrollTo('gallery')">Gallery</a></li>
-            <li><a onclick="scrollTo('menu')">Menu</a></li>
-            <li><a onclick="scrollTo('vouchers')">Vouchers</a></li>
-            <li><a onclick="scrollTo('reservation')">Reserve</a></li>
-            <li><a onclick="scrollTo('contact')">Contact</a></li>
+            <li><a onclick="smoothScrollTo('home')">Home</a></li>
+            <li><a onclick="smoothScrollTo('about')">About</a></li>
+            <li><a onclick="smoothScrollTo('gallery')">Gallery</a></li>
+            <li><a onclick="smoothScrollTo('menu')">Menu</a></li>
+            <li><a onclick="smoothScrollTo('vouchers')">Vouchers</a></li>
+            <li><a onclick="smoothScrollTo('reservation')">Reserve</a></li>
+            <li><a onclick="smoothScrollTo('contact')">Contact</a></li>
         </ul>
     </nav>
 
@@ -742,8 +742,8 @@
             <h1>BOMBAY PALACE</h1>
             <p>Where Every Dish Tells a Story</p>
             <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="scrollTo('reservation')">🍽️ Reserve Now</button>
-                <button class="btn btn-secondary" onclick="scrollTo('vouchers')">💝 Buy Vouchers</button>
+                <button class="btn btn-primary" onclick="smoothScrollTo('reservation')">🍽️ Reserve Now</button>
+                <button class="btn btn-secondary" onclick="smoothScrollTo('vouchers')">💝 Buy Vouchers</button>
             </div>
         </div>
     </div>
@@ -1062,7 +1062,7 @@
             menu.classList.toggle('active');
         }
 
-        function scrollTo(id) {
+        function smoothScrollTo(id) {
             const element = document.getElementById(id);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
@@ -1071,38 +1071,34 @@
         }
 
         function handleReservation(event) {
-            event.preventDefault();
+            event.preventDefault(); // Stop the page from redirecting
             
             const form = event.target;
             const alertBox = document.getElementById('reservationAlert');
             const data = new FormData(form);
-            
-            // Convert plain form fields directly to JSON format for Formspree API processing
-            const object = {};
-            data.forEach((value, key) => object[key] = value);
-            const json = JSON.stringify(object);
 
             fetch(form.action, {
                 method: form.method,
-                body: json,
+                body: data,
                 headers: {
-                    'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 }
             })
             .then(response => {
                 if (response.ok) {
+                    // Show the green success message
                     alertBox.style.display = 'block';
                     form.reset();
+                    
                     setTimeout(() => {
                         alertBox.style.display = 'none';
                     }, 5000);
                 } else {
-                    form.submit();
+                    alert("Oops! There was a problem saving your booking. Please try again.");
                 }
             })
             .catch(error => {
-                form.submit();
+                alert("Network error. Please check your internet connection.");
             });
         }
 
