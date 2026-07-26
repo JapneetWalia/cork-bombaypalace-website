@@ -940,7 +940,7 @@
                 <div class="alert alert-success" id="reservationAlert">
                     ✓ Reservation request received! We will confirm your booking shortly.
                 </div>
-                <form action="https://formspree.io/f/mzdnkwep" method="POST" id="res-form" onsubmit="handleReservation(event)"> 
+                <form action="https://formspree.io/f/mzdnkwep" method="POST" id="res-form"> 
                     <div class="form-group">
                         <label for="res-name">Your Full Name *</label>
                         <input type="text" id="res-name" name="name" placeholder="John Doe" required>
@@ -1070,37 +1070,43 @@
             document.getElementById('nav-menu').classList.remove('active');
         }
 
-        function handleReservation(event) {
-            event.preventDefault(); // Stop the page from redirecting
+        // Automatically attach the listener when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            const reservationForm = document.getElementById('res-form');
             
-            const form = event.target;
-            const alertBox = document.getElementById('reservationAlert');
-            const data = new FormData(form);
-
-            fetch(form.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Show the green success message
-                    alertBox.style.display = 'block';
-                    form.reset();
+            if (reservationForm) {
+                reservationForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Stop page from redirecting
                     
-                    setTimeout(() => {
-                        alertBox.style.display = 'none';
-                    }, 5000);
-                } else {
-                    alert("Oops! There was a problem saving your booking. Please try again.");
-                }
-            })
-            .catch(error => {
-                alert("Network error. Please check your internet connection.");
-            });
-        }
+                    const form = event.target;
+                    const alertBox = document.getElementById('reservationAlert');
+                    const data = new FormData(form);
+
+                    fetch(form.action, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alertBox.style.display = 'block';
+                            form.reset();
+                            
+                            setTimeout(() => {
+                                alertBox.style.display = 'none';
+                            }, 5000);
+                        } else {
+                            alert("Oops! There was a problem saving your booking. Please try again.");
+                        }
+                    })
+                    .catch(error => {
+                        alert("Network error. Please check your internet connection.");
+                    });
+                });
+            }
+        });
 
         function openVoucherModal(amount, type) {
             document.getElementById('voucherModal').classList.add('active');
