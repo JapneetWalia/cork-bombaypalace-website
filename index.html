@@ -8,6 +8,9 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
+        /* ==========================================
+           1. CORE & GLOBAL STYLES
+           ========================================== */
         * {
             margin: 0;
             padding: 0;
@@ -26,6 +29,10 @@
             --card-bg: #ffffff;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--dark);
@@ -34,7 +41,7 @@
             overflow-x: hidden;
         }
 
-        /* Subtle Ambient Background */
+        /* Ambient Background Glow */
         body::before {
             content: '';
             position: fixed;
@@ -49,7 +56,93 @@
             z-index: -1;
         }
 
-        /* Navigation */
+        /* Layout Container */
+        section {
+            padding: 5rem 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+
+        /* ==========================================
+           2. REUSABLE COMPONENTS & BUTTONS
+           ========================================== */
+        .btn {
+            padding: 0.9rem 2.2rem;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, #b89243 100%);
+            color: #0d4f4f;
+            box-shadow: 0 8px 20px rgba(201, 169, 97, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(201, 169, 97, 0.4);
+            background: linear-gradient(135deg, #f4d088 0%, var(--gold) 100%);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background: rgba(76, 175, 80, 0.2);
+            color: #81c784;
+            border: 1px solid #4caf50;
+        }
+
+
+        /* ==========================================
+           3. NAVIGATION
+           ========================================== */
         nav {
             position: sticky;
             top: 0;
@@ -117,7 +210,10 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+
+        /* ==========================================
+           4. HERO SECTION
+           ========================================== */
         .hero {
             min-height: 90vh;
             background: linear-gradient(135deg, var(--secondary) 0%, #093b3b 100%);
@@ -175,72 +271,33 @@
             flex-wrap: wrap;
         }
 
-        /* Buttons */
-        .btn {
-            padding: 0.9rem 2.2rem;
-            font-size: 0.95rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+
+        /* ==========================================
+           5. ABOUT SECTION
+           ========================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold) 0%, #b89243 100%);
-            color: #0d4f4f;
-            box-shadow: 0 8px 20px rgba(201, 169, 97, 0.3);
+        .about-image-wrapper {
+            width: 100%;
+            min-height: 350px;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(201, 169, 97, 0.4);
-            background: linear-gradient(135deg, #f4d088 0%, var(--gold) 100%);
+        .about-image {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            object-fit: cover;
+            display: block;
         }
 
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-        }
-
-        .btn-secondary:hover {
-            background: var(--gold);
-            color: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        /* Section Universal Styling */
-        section {
-            padding: 5rem 5%;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3.5rem;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
-            font-weight: 900;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-subtitle {
-            font-size: 1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* About Section */
         .about-content {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -249,93 +306,137 @@
         }
 
         .about-text h3 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
+            font-weight: 700;
             color: var(--primary-dark);
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
 
         .about-text p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
-            color: #555;
-            margin-bottom: 1.2rem;
+            color: #4a5568;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .highlight-item {
+            background: #ffffff;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .highlight-title {
+            display: block;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .highlight-desc {
+            display: block;
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
         }
 
         .about-badge {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
-            border-top: 5px solid var(--primary);
+            background: #ffffff;
+            padding: 3.5rem 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border-top: 6px solid var(--primary);
             text-align: center;
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+
+        .about-badge:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
         }
 
         .about-badge-icon {
             font-size: 4rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
         }
 
-        /* Gallery Section */
+        .about-badge:hover .about-badge-icon {
+            transform: scale(1.1);
+        }
+
+
+        /* ==========================================
+           6. GALLERY SECTION
+           ========================================== */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.8rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .gallery-item {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-dark) 100%);
+            background: var(--card-bg);
             border-radius: 16px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
+            padding: 2rem 1rem;
+            text-align: center;
+            font-size: 3rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(14, 165, 165, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .gallery-item::after {
             content: attr(data-label);
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(13, 79, 79, 0.9);
-            color: white;
-            padding: 0.8rem;
-            text-align: center;
+            display: block;
             font-size: 0.95rem;
             font-weight: 600;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
+            color: var(--secondary);
+            margin-top: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .gallery-item:hover::after {
-            transform: translateY(0);
-        }
 
-        /* Menu Section */
-
+        /* ==========================================
+           7. MENU SECTION
+           ========================================== */
         .allergen-badge {
-        background-color: #f0e6d2;
-        color: #c4953c;
-        font-size: 0.75rem;
-        padding: 0.1rem 0.4rem;
-        border-radius: 4px;
-        margin-left: 0.5rem;
-        font-family: sans-serif;
-        vertical-align: middle;
-        cursor: help;
-}
+            background-color: #f0e6d2;
+            color: #c4953c;
+            font-size: 0.75rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            font-family: sans-serif;
+            vertical-align: middle;
+            cursor: help;
+        }
 
         .menu-grid {
             display: grid;
@@ -403,26 +504,26 @@
             color: #666;
         }
 
-        /* Voucher Section */
+
+        /* ==========================================
+           8. VOUCHER SECTION
+           ========================================== */
         .voucher-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .voucher-card {
-            background: white;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-            border-top: 5px solid var(--primary);
             display: flex;
             flex-direction: column;
-        }
-
-        .voucher-card:nth-child(2) {
-            border-top-color: var(--gold);
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .voucher-card:hover {
@@ -430,29 +531,17 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
-        .voucher-header {
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-dark) 100%);
-            color: white;
-            text-align: center;
+        .voucher-image-wrapper {
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            overflow: hidden;
         }
 
-        .voucher-card:nth-child(2) .voucher-header {
-            background: linear-gradient(135deg, #a37f35 0%, var(--gold) 100%);
-        }
-
-        .voucher-amount {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-        }
-
-        .voucher-label {
-            font-size: 1.1rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            opacity: 0.95;
+        .voucher-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .voucher-body {
@@ -484,7 +573,10 @@
             align-items: center;
         }
 
-        /* Reservation Section */
+
+        /* ==========================================
+           9. RESERVATION SECTION
+           ========================================== */
         #reservation-container {
             background: linear-gradient(135deg, var(--secondary) 0%, #093b3b 100%);
             border-radius: 24px;
@@ -508,6 +600,12 @@
 
         .form-group {
             margin-bottom: 1.2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
         }
 
         label {
@@ -546,29 +644,10 @@
             box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.2);
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-        }
 
-        /* Alert Messages */
-        .alert {
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            display: none;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .alert-success {
-            background: rgba(76, 175, 80, 0.2);
-            color: #81c784;
-            border: 1px solid #4caf50;
-        }
-
-        /* Contact Section */
+        /* ==========================================
+           10. CONTACT SECTION
+           ========================================== */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -605,7 +684,10 @@
             line-height: 1.6;
         }
 
-        /* Footer */
+
+        /* ==========================================
+           11. FOOTER
+           ========================================== */
         footer {
             background: var(--dark);
             color: #fef5f0;
@@ -619,7 +701,10 @@
             font-size: 0.9rem;
         }
 
-        /* Modal */
+
+        /* ==========================================
+           12. MODAL DIALOGS
+           ========================================== */
         .modal {
             display: none;
             position: fixed;
@@ -684,7 +769,21 @@
             border-color: var(--primary);
         }
 
-        /* Mobile Styles */
+
+        /* ==========================================
+           13. MEDIA QUERIES & RESPONSIVENESS
+           ========================================== */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .about-badge {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -695,8 +794,7 @@
                 width: 100%;
                 background: var(--secondary);
                 padding: 1.5rem 0;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-                /* FIX: Prevents layout collapse overlay blockages */
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
                 pointer-events: none; 
             }
 
@@ -714,6 +812,11 @@
                 gap: 2rem;
             }
 
+            .voucher-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 0;
@@ -728,11 +831,23 @@
             }
         }
 
-        html {
-            scroll-behavior: smooth;
+        @media (max-width: 576px) {
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .about-text h3 {
+                font-size: 1.75rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
+
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -749,6 +864,8 @@
         </ul>
     </nav>
 
+    
+
     <!-- Hero Section -->
     <div id="home" class="hero">
         <div class="hero-content">
@@ -763,29 +880,42 @@
         </div>
     </div>
 
+
     <!-- About Section -->
     <section id="about">
         <div class="section-header">
             <h2 class="section-title">About Us</h2>
             <p class="section-subtitle">Experience the magic of authentic Indian dining in Cork</p>
         </div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Culinary Excellence</h3>
+        <div class="about-grid">
+            <div class="about-image-wrapper">
+                <!-- Ensure images/bg_image.png path exists in your folder -->
+                <img src="images/bg_image.png" alt="Bombay Palace Atmosphere" class="about-image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800';">
+            </div>
+            <div class="about-text-content">
+                <h3>Culinary Excellence in the Heart of Cork</h3>
                 <p>
-                    Bombay Palace brings the rich, diverse culinary heritage of India straight to the heart of Cork City. Our experienced chefs prepare each dish using traditional techniques, freshly ground spice blends, and locally sourced ingredients.
+                    Bombay Palace brings the rich, diverse culinary heritage of India straight to Cork City. Our experienced chefs prepare each dish using traditional techniques, freshly ground spice blends, and locally sourced ingredients.
                 </p>
                 <p>
                     Whether you are dining in with family or celebrating a special occasion, we offer an inviting atmosphere filled with warmth and hospitality.
                 </p>
-            </div>
-            <div class="about-badge">
-                <div class="about-badge-icon">🍛</div>
-                <h4>Authentic Recipes</h4>
-                <p style="font-size: 0.85rem; color: #777; margin-top: 0.5rem;">Crafted with hand-selected Indian spices and fresh ingredients.</p>
+
+                <!-- Feature Highlights -->
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <span class="highlight-title">Authentic Recipes</span>
+                        <span class="highlight-desc">Crafted with hand-selected Indian spices and fresh ingredients.</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-title">Warm Hospitality</span>
+                        <span class="highlight-desc">An inviting ambiance perfect for family gatherings & celebrations.</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
 
     <!-- Gallery Section -->
     <section id="gallery">
@@ -1417,62 +1547,109 @@
         }
     </style>
 
+
+
     <!-- Voucher Section -->
     <section id="vouchers">
         <div class="section-header">
             <h2 class="section-title">Gift Vouchers</h2>
             <p class="section-subtitle">Treat friends and family to an authentic dining experience</p>
         </div>
+
+        <!-- Hidden Gift Up container for background script initialization -->
+        <div class="gift-up-target" data-site-id="8e00666c-b611-4a5d-85a4-c2d3faf07d1e" data-platform="Other" style="display: none !important;"></div>
+
         <div class="voucher-grid">
+            <!-- €5 Voucher -->
             <div class="voucher-card">
-                <div class="voucher-header">
-                    <div class="voucher-amount">€25</div>
-                    <div class="voucher-label">Silver Voucher</div>
+                <div class="voucher-image-wrapper">
+                    <img src="images/vouchers/voucher_5.png" alt="€5 Gift Voucher" class="voucher-image">
                 </div>
                 <div class="voucher-body">
-                    <div class="voucher-desc">A great gift for lunch or casual meals</div>
+                    <div class="voucher-desc">A light treat or an add-on to any meal</div>
                     <div class="voucher-benefits">
-                        <div class="benefit-item">✓ Valid for 12 months</div>
+                        <div class="benefit-item">✓ No expiry date — valid indefinitely</div>
                         <div class="benefit-item">✓ Valid for Dine-in or Takeaway</div>
-                        <div class="benefit-item">✓ Instant email delivery</div>
+                        <div class="benefit-item">✓ Instant email delivery with QR code</div>
                     </div>
-                    <button class="btn btn-primary" onclick="openVoucherModal(25, 'Silver')">Buy Now</button>
+                    <a href="https://giftup.app/place-order/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?value=5" 
+                    target="_blank" 
+                    class="btn btn-primary" 
+                    data-gift-up-open>Buy Now</a>
                 </div>
             </div>
 
+            <!-- €10 Voucher -->
             <div class="voucher-card">
-                <div class="voucher-header">
-                    <div class="voucher-amount">€50</div>
-                    <div class="voucher-label">Gold Voucher</div>
+                <div class="voucher-image-wrapper">
+                    <img src="images/vouchers/voucher_10.png" alt="€10 Gift Voucher" class="voucher-image">
                 </div>
                 <div class="voucher-body">
-                    <div class="voucher-desc">Ideal for a evening dinner experience</div>
+                    <div class="voucher-desc">Great towards starters, desserts, or drinks</div>
                     <div class="voucher-benefits">
-                        <div class="benefit-item">✓ Valid for 12 months</div>
+                        <div class="benefit-item">✓ No expiry date — valid indefinitely</div>
                         <div class="benefit-item">✓ Valid for Dine-in or Takeaway</div>
-                        <div class="benefit-item">✓ Instant email delivery</div>
+                        <div class="benefit-item">✓ Instant email delivery with QR code</div>
                     </div>
-                    <button class="btn btn-primary" onclick="openVoucherModal(50, 'Gold')">Buy Now</button>
+                    <a href="https://giftup.app/place-order/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?value=10" 
+                    target="_blank" 
+                    class="btn btn-primary" 
+                    data-gift-up-open>Buy Now</a>
                 </div>
             </div>
 
+            <!-- €20 Voucher -->
             <div class="voucher-card">
-                <div class="voucher-header">
-                    <div class="voucher-amount">€100</div>
-                    <div class="voucher-label">Platinum Voucher</div>
+                <div class="voucher-image-wrapper">
+                    <img src="images/vouchers/voucher_20.png" alt="€20 Gift Voucher" class="voucher-image">
                 </div>
                 <div class="voucher-body">
-                    <div class="voucher-desc">The ultimate celebration dining gift</div>
+                    <div class="voucher-desc">An ideal contribution towards a main course and dining experience</div>
                     <div class="voucher-benefits">
-                        <div class="benefit-item">✓ Valid for 12 months</div>
+                        <div class="benefit-item">✓ No expiry date — valid indefinitely</div>
                         <div class="benefit-item">✓ Valid for Dine-in or Takeaway</div>
-                        <div class="benefit-item">✓ Instant email delivery</div>
+                        <div class="benefit-item">✓ Instant email delivery with QR code</div>
                     </div>
-                    <button class="btn btn-primary" onclick="openVoucherModal(100, 'Platinum')">Buy Now</button>
+                    <a href="https://giftup.app/place-order/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?value=30" 
+                    target="_blank" 
+                    class="btn btn-primary" 
+                    data-gift-up-open>Buy Now</a>
+                </div>
+            </div>
+
+            <!-- €50 Voucher -->
+            <div class="voucher-card">
+                <div class="voucher-image-wrapper">
+                    <img src="images/vouchers/voucher_50.png" alt="€50 Gift Voucher" class="voucher-image">
+                </div>
+                <div class="voucher-body">
+                    <div class="voucher-desc">Ideal for an evening dining celebration</div>
+                    <div class="voucher-benefits">
+                        <div class="benefit-item">✓ No expiry date — valid indefinitely</div>
+                        <div class="benefit-item">✓ Valid for Dine-in or Takeaway</div>
+                        <div class="benefit-item">✓ Instant email delivery with QR code</div>
+                    </div>
+                    <a href="https://giftup.app/place-order/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?value=50" 
+                    target="_blank" 
+                    class="btn btn-primary" 
+                    data-gift-up-open>Buy Now</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Gift Up Installation Script -->
+    <script type="text/javascript">
+    (function (g, i, f, t, u, p, s) {
+        g[u] = g[u] || function() { (g[u].q = g[u].q || []).push(arguments) };
+        p = i.createElement(f);
+        p.async = 1;
+        p.src = t;
+        s = i.getElementsByTagName(f)[0];
+        s.parentNode.insertBefore(p, s);
+    })(window, document, "script", "https://cdn.giftup.app/dist/gift-up.js", "giftup");
+    </script>
+
 
     <!-- Reservation Section -->
     <section id="reservation">
