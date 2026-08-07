@@ -6,7 +6,12 @@
     <title>Bombay Palace Cork - Authentic Indian Cuisine</title>
     <link rel="icon" type="image/png" href="images/logo/logo_gold.png">
     
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         /* ==========================================
            1. CORE & GLOBAL STYLES
@@ -711,6 +716,35 @@
             font-size: 0.9rem;
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--gold);
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(201, 169, 97, 0.3);
+        }
+
+        .social-icon:hover {
+            background: var(--gold);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.4);
+        }
+
 
         /* ==========================================
            12. MODAL DIALOGS
@@ -885,7 +919,7 @@
     <div id="home" class="hero">
         <div class="hero-content">
             <img src="images/logo/logo_gold.png" alt="Bombay Palace Cork Logo" class="hero-logo" onerror="this.style.display='none'">
-            <div class="tagline">✨ Welcome to Authentic Flavors ✨</div>
+            <div class="tagline">✨ Proudly Serving Cork for 28 Years ✨</div>
             <h1>BOMBAY PALACE</h1>
             <p>Where Every Dish Tells a Story</p>
             <div class="cta-buttons">
@@ -1825,11 +1859,17 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer with Facebook and Instagram Icons -->
     <footer>
-        <p><strong>🏰 BOMBAY PALACE CORK</strong></p>
-        <p>Authentic Indian Cuisine | Cork, Ireland</p>
-        <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">© 2026 Bombay Palace. v1.0 Live Test</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/BombayPalaceCork" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/bombaypalacecork/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <p>&copy; 2026 Bombay Palace Cork. All rights reserved.</p>
     </footer>
 
     <!-- Voucher Payment Modal -->
