@@ -161,6 +161,7 @@
             font-size: 1.8rem;
             font-weight: 900;
             background: linear-gradient(135deg, #f4d088 0%, #0ea5a5 100%);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px;
@@ -275,34 +276,43 @@
         /* ==========================================
            5. ABOUT SECTION
            ========================================== */
+        .about-section {
+            background-image: url('images/bg_image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 16px;
+        }
+
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .about-image-wrapper {
             width: 100%;
-            min-height: 350px;
+            height: 100%;
+            min-height: 400px;
             position: relative;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         .about-image {
             width: 100%;
             height: 100%;
-            min-height: 350px;
             object-fit: cover;
             display: block;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 4rem;
-            align-items: center;
+        .about-text {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 2.5rem;
+            border-radius: 16px;
+            backdrop-filter: blur(8px);
         }
 
         .about-text h3 {
@@ -774,6 +784,11 @@
            13. MEDIA QUERIES & RESPONSIVENESS
            ========================================== */
         @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
@@ -881,18 +896,22 @@
     </div>
 
 
+
     <!-- About Section -->
-    <section id="about">
+    <section id="about" class="about-section">
         <div class="section-header">
             <h2 class="section-title">About Us</h2>
             <p class="section-subtitle">Experience the magic of authentic Indian dining in Cork</p>
         </div>
+        
         <div class="about-grid">
+            <!-- Left Column: Image -->
             <div class="about-image-wrapper">
-                <!-- Ensure images/bg_image.png path exists in your folder -->
                 <img src="images/bg_image.png" alt="Bombay Palace Atmosphere" class="about-image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800';">
             </div>
-            <div class="about-text-content">
+            
+            <!-- Right Column: Text & Content -->
+            <div class="about-text">
                 <h3>Culinary Excellence in the Heart of Cork</h3>
                 <p>
                     Bombay Palace brings the rich, diverse culinary heritage of India straight to Cork City. Our experienced chefs prepare each dish using traditional techniques, freshly ground spice blends, and locally sourced ingredients.
@@ -918,6 +937,7 @@
 
 
     <!-- Gallery Section -->
+    <!--
     <section id="gallery">
         <div class="section-header">
             <h2 class="section-title">Our Culinary Creations</h2>
@@ -931,9 +951,10 @@
             <div class="gallery-item" data-label="Garlic Naan">🥪</div>
             <div class="gallery-item" data-label="Paneer Curry">🧀</div>
         </div>
-    </section>
-
+    </section> 
+    -->
    
+
     <!-- Menu Section -->
     <section id="menu-section" style="padding: 4rem 2rem; background-color: #faf9f6; color: #2d2d2d;">
         <div style="text-align: center; margin-bottom: 3rem;">
