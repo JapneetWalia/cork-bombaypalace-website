@@ -244,6 +244,41 @@
             }
         }
 
+        /* Mobile Dropdown Styles */
+        @media screen and (max-width: 768px) {
+            #nav-menu {
+                display: none; /* Hidden by default on mobile until toggled */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #1a1a1a; /* Match your header theme background */
+                padding: 1.5rem 0;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            /* Class toggled by toggleMenu() JS function */
+            #nav-menu.active {
+                display: flex;
+            }
+
+            /* Social icons container in mobile dropdown */
+            .nav-social-li {
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1); /* Optional divider line */
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .header-social-links {
+                justify-content: center;
+                gap: 1.5rem;
+            }
+        }
+
         
 
 
@@ -942,17 +977,19 @@
                 <li><a onclick="smoothScrollTo('vouchers')">Vouchers</a></li>
                 <li><a onclick="smoothScrollTo('reservation')">Reserve</a></li>
                 <li><a onclick="smoothScrollTo('contact')">Contact</a></li>
+                
+                <!-- Header Social Links inside nav-menu -->
+                <li class="nav-social-li">
+                    <div class="header-social-links">
+                        <a href="https://www.facebook.com/BombayPalaceCork" target="_blank" rel="noopener noreferrer" class="social-icon header-social" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/bombaypalacecork/" target="_blank" rel="noopener noreferrer" class="social-icon header-social" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </li>
             </ul>
-
-            <!-- Header Social Links -->
-            <div class="header-social-links">
-                <a href="https://www.facebook.com/BombayPalaceCork" target="_blank" rel="noopener noreferrer" class="social-icon header-social" aria-label="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/bombaypalacecork/" target="_blank" rel="noopener noreferrer" class="social-icon header-social" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
 
             <div class="mobile-toggle" onclick="toggleMenu()">☰</div>
         </div>
