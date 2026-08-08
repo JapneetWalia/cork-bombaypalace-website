@@ -347,10 +347,6 @@
            5. ABOUT SECTION
            ========================================== */
         .about-section {
-            background-image: url('images/bg_image.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             border-radius: 16px;
         }
 
@@ -921,6 +917,13 @@
                 display: block;
             }
 
+            .about-section {
+                background-image: url('images/bg_image.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -1023,7 +1026,7 @@
         <div class="about-grid">
             <!-- Left Column: Image -->
             <div class="about-image-wrapper">
-                <img src="images/bg_image.png" alt="Bombay Palace Atmosphere" class="about-image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800';">
+                <img src="images/bg_image.png" alt="Bombay Palace Atmosphere" class="about-image"> <!--onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800';"> -->
             </div>
             
             <!-- Right Column: Text & Content -->
