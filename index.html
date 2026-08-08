@@ -216,6 +216,36 @@
             cursor: pointer;
         }
 
+        /* Header Social Links Styling */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-social-links {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .social-icon.header-social {
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(201, 169, 97, 0.4);
+        }
+
+        /* Adjust for smaller screens */
+        @media (max-width: 768px) {
+            .header-social-links {
+                margin-right: 0.5rem;
+            }
+        }
+
+        
+
 
         /* ==========================================
            4. HERO SECTION
@@ -898,19 +928,34 @@
 
 
 <body>
+
     <!-- Navigation -->
     <nav>
         <div class="logo" onclick="smoothScrollTo('home')">🏰 BOMBAY PALACE</div>
-        <div class="mobile-toggle" onclick="toggleMenu()">☰</div>
-        <ul id="nav-menu">
-            <li><a onclick="smoothScrollTo('home')">Home</a></li>
-            <li><a onclick="smoothScrollTo('about')">About</a></li>
-            <li><a onclick="smoothScrollTo('gallery')">Gallery</a></li>
-            <li><a onclick="smoothScrollTo('menu-section')">Menu</a></li>
-            <li><a onclick="smoothScrollTo('vouchers')">Vouchers</a></li>
-            <li><a onclick="smoothScrollTo('reservation')">Reserve</a></li>
-            <li><a onclick="smoothScrollTo('contact')">Contact</a></li>
-        </ul>
+        
+        <div class="nav-right">
+            <ul id="nav-menu">
+                <li><a onclick="smoothScrollTo('home')">Home</a></li>
+                <li><a onclick="smoothScrollTo('about')">About</a></li>
+                <li><a onclick="smoothScrollTo('gallery')">Gallery</a></li>
+                <li><a onclick="smoothScrollTo('menu-section')">Menu</a></li>
+                <li><a onclick="smoothScrollTo('vouchers')">Vouchers</a></li>
+                <li><a onclick="smoothScrollTo('reservation')">Reserve</a></li>
+                <li><a onclick="smoothScrollTo('contact')">Contact</a></li>
+            </ul>
+
+            <!-- Header Social Links -->
+            <div class="header-social-links">
+                <a href="https://www.facebook.com/BombayPalaceCork" target="_blank" rel="noopener noreferrer" class="social-icon header-social" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/bombaypalacecork/" target="_blank" rel="noopener noreferrer" class="social-icon header-social" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+
+            <div class="mobile-toggle" onclick="toggleMenu()">☰</div>
+        </div>
     </nav>
 
     
