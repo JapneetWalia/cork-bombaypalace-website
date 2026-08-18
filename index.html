@@ -354,7 +354,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2.5rem;
-            align-items: center;
+            align-items: stretch;
         }
 
         .about-image-wrapper {
@@ -372,6 +372,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            object-position: center 50%; /* adjust % to shift which part shows */
         }
 
         .about-text {
