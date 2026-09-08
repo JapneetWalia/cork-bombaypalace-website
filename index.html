@@ -1848,9 +1848,11 @@
                 <p class="section-subtitle">Reserve your seat with us online</p>
             </div>
             <div class="form-container">
+                <!--
                 <div class="alert alert-success" id="reservationAlert">
                     ✓ Reservation request received! We will confirm your booking shortly.
                 </div>
+                -->
                 <form action="https://formspree.io/f/mzdnkwep" method="POST" id="res-form"> 
                     <div class="form-group">
                         <label for="res-name">Your Full Name *</label>
@@ -2032,6 +2034,17 @@
         </div>
     </div>
 
+    <!-- Reservation Confirmation Modal Popup -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close" onclick="closeReservationModal()">&times;</span>
+            <div style="font-size: 3rem; color: #4caf50; margin-bottom: 1rem;">✓</div>
+            <h2 class="modal-title" style="margin-bottom: 0.5rem;">Reservation Received!</h2>
+            <p style="color: #666; margin-bottom: 1.5rem;">Thank you! We have now received your reservation. We look forward to seeing you soon.</p>
+            <button type="button" class="btn btn-primary" onclick="closeReservationModal()">OK</button>
+        </div>
+    </div>
+
     <script>
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
@@ -2148,10 +2161,11 @@
                     })
                     .then(response => {
                         if (response.ok) {
-                            alertBox.style.display = 'block';
+                            // New code: opens the modal popup window
+                            openReservationModal();
+                            
                             form.reset();
                             document.getElementById('res-country-code').value = "+353";
-                            setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
                         } else {
                             alert("Oops! There was a problem saving your booking. Please try again.");
                         }
@@ -2162,6 +2176,24 @@
 
             if (dateInput) {
                 dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+            }
+        });
+
+        // Opens the modal popup
+        function openReservationModal() {
+            document.getElementById('reservationModal').classList.add('active');
+        }
+
+        // Closes the modal popup
+        function closeReservationModal() {
+            document.getElementById('reservationModal').classList.remove('active');
+        }
+
+        // Closes the modal if the user clicks anywhere outside the popup box
+        window.addEventListener('click', function(event) {
+            const resModal = document.getElementById('reservationModal');
+            if (event.target === resModal) {
+                closeReservationModal();
             }
         });
         
