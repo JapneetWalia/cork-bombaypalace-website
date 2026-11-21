@@ -13,32 +13,137 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
+        /* ==========================================
+           FESTIVE SNOWFALL & FAIRY LIGHTS
+           ========================================== */
+        #snow-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 950;
+        }
+
+        /* Delicate Festive Fairy Lights Strand */
+        .christmas-lights {
+            position: relative;
+            width: 100%;
+            height: 22px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            overflow: hidden;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(10, 46, 30, 0.95) 0%, transparent 100%);
+            z-index: 998;
+            padding: 0 12px;
+        }
+
+        .christmas-lights::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(212, 175, 55, 0.45);
+        }
+
+        .light-bulb {
+            position: relative;
+            width: 9px;
+            height: 13px;
+            border-radius: 50% 50% 55% 55%;
+            margin-top: 4px;
+            animation: twinkle 2.2s ease-in-out infinite;
+        }
+
+        .light-bulb::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 2px;
+            width: 5px;
+            height: 4px;
+            background: #2f4f3f;
+            border-radius: 2px 2px 0 0;
+        }
+
+        .light-bulb.red {
+            background: #ff3b4e;
+            box-shadow: 0 0 10px 2px rgba(255, 59, 78, 0.85);
+            animation-delay: 0s;
+        }
+
+        .light-bulb.gold {
+            background: #ffd966;
+            box-shadow: 0 0 10px 2px rgba(255, 217, 102, 0.9);
+            animation-delay: 0.55s;
+        }
+
+        .light-bulb.green {
+            background: #22c55e;
+            box-shadow: 0 0 10px 2px rgba(34, 197, 94, 0.85);
+            animation-delay: 1.1s;
+        }
+
+        .light-bulb.warm {
+            background: #fff4d2;
+            box-shadow: 0 0 10px 2px rgba(255, 244, 210, 0.9);
+            animation-delay: 1.65s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.45;
+                transform: scale(0.92);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #snow-canvas { display: none; }
+            .light-bulb, .notice-track, .voucher-featured-card, .hero-offer-pill {
+                animation: none !important;
+            }
+        }
 
         /* ==========================================
-        MOVING NOTICE BAR STYLES
-        ========================================== */
+           MOVING FESTIVE NOTICE BAR STYLES
+           ========================================== */
         .notice-bar {
-            background: linear-gradient(135deg, var(--gold) 0%, #b89243 100%);
-            color: #0d4f4f;
-            padding: 0.6rem 0;
+            background: linear-gradient(90deg, #7f1019 0%, #c41e3a 30%, #a3162b 70%, #7f1019 100%);
+            color: #fffaf0;
+            padding: 0.65rem 0;
             font-size: 0.9rem;
-            font-weight: 700; /* Bold text */
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            box-shadow: 0 3px 14px rgba(127, 16, 25, 0.35);
+            border-bottom: 2px solid var(--gold);
             position: relative;
             z-index: 999;
             overflow: hidden;
             white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .notice-bar strong {
+            color: var(--gold-light);
         }
 
         .notice-track {
             display: inline-block;
             white-space: nowrap;
-            animation: marquee 30s linear infinite;
+            animation: marquee 28s linear infinite;
         }
 
         .notice-bar:hover .notice-track {
-            animation-play-state: paused; /* Pauses scrolling on mouse hover for easy reading */
+            animation-play-state: paused;
         }
 
         @keyframes marquee {
@@ -52,7 +157,7 @@
 
 
         /* ==========================================
-           1. CORE & GLOBAL STYLES
+           1. CORE & GLOBAL STYLES (CHRISTMAS THEME)
            ========================================== */
         * {
             margin: 0;
@@ -61,14 +166,18 @@
         }
 
         :root {
-            --primary: #0ea5a5;
-            --primary-dark: #097272;
-            --secondary: #0d4f4f;
-            --accent: #d4a574;
-            --gold: #c9a961;
-            --gold-light: #f4d088;
-            --light: #faf7f2;
-            --dark: #121212;
+            --primary: #b91c1c;
+            --primary-dark: #8c1420;
+            --secondary: #0b3d28;
+            --secondary-dark: #07281a;
+            --festive-red: #c41e3a;
+            --festive-red-dark: #7f1019;
+            --festive-green: #14532d;
+            --accent: #d4af37;
+            --gold: #d4af37;
+            --gold-light: #fae08c;
+            --light: #fffaf3;
+            --dark: #1c1412;
             --card-bg: #ffffff;
         }
 
@@ -79,12 +188,12 @@
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--dark);
-            background: linear-gradient(135deg, #fffaf5 0%, #f5ede0 100%);
+            background: linear-gradient(135deg, #fffbf4 0%, #fcf1e3 50%, #f9ece4 100%);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Ambient Background Glow */
+        /* Ambient Festive Warm Background Glow */
         body::before {
             content: '';
             position: fixed;
@@ -92,9 +201,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(circle at 15% 30%, rgba(14, 165, 165, 0.04) 0%, transparent 50%),
-                radial-gradient(circle at 85% 70%, rgba(212, 165, 116, 0.05) 0%, transparent 50%);
+            background-image:
+                radial-gradient(circle at 12% 25%, rgba(196, 30, 58, 0.06) 0%, transparent 45%),
+                radial-gradient(circle at 88% 72%, rgba(212, 175, 55, 0.09) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(11, 61, 40, 0.04) 0%, transparent 55%);
             pointer-events: none;
             z-index: -1;
         }
@@ -113,16 +223,34 @@
 
         .section-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-size: clamp(2.2rem, 4vw, 3.3rem);
             font-weight: 900;
             color: var(--secondary);
             margin-bottom: 0.5rem;
         }
 
+        .festive-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 0.6rem auto 0.9rem;
+            color: var(--festive-red);
+            font-size: 0.95rem;
+        }
+
+        .festive-divider::before,
+        .festive-divider::after {
+            content: '';
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
         .section-subtitle {
             font-size: 1rem;
-            color: #666;
-            max-width: 600px;
+            color: #5c4b47;
+            max-width: 620px;
             margin: 0 auto;
         }
 
@@ -140,31 +268,51 @@
             font-weight: 600;
             transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--gold) 0%, #b89243 100%);
-            color: #0d4f4f;
-            box-shadow: 0 8px 20px rgba(201, 169, 97, 0.3);
+            background: linear-gradient(135deg, #f3d27a 0%, var(--gold) 50%, #b88a1e 100%);
+            color: #1f140a;
+            box-shadow: 0 8px 22px rgba(212, 175, 55, 0.38);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(201, 169, 97, 0.4);
-            background: linear-gradient(135deg, #f4d088 0%, var(--gold) 100%);
+            box-shadow: 0 12px 28px rgba(212, 175, 55, 0.55);
+            background: linear-gradient(135deg, #fbe49e 0%, #e0b94a 100%);
         }
 
         .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
+            background: rgba(196, 30, 58, 0.22);
+            border: 2px solid var(--gold-light);
+            color: #fffaf0;
         }
 
         .btn-secondary:hover {
-            background: var(--gold);
-            color: var(--secondary);
+            background: linear-gradient(135deg, var(--festive-red) 0%, var(--festive-red-dark) 100%);
+            border-color: var(--gold);
+            color: #ffffff;
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(196, 30, 58, 0.45);
+        }
+
+        .btn-festive {
+            background: linear-gradient(135deg, #d62839 0%, #a3162b 55%, #7f1019 100%);
+            color: #ffffff;
+            border: 2px solid var(--gold-light);
+            box-shadow: 0 10px 26px rgba(196, 30, 58, 0.4);
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-festive:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 34px rgba(196, 30, 58, 0.55), 0 0 18px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #e63946 0%, #b91c1c 100%);
         }
 
         .alert {
@@ -184,48 +332,59 @@
 
 
         /* ==========================================
-           3. NAVIGATION
+           3. NAVIGATION (FESTIVE EVERGREEN & GOLD)
            ========================================== */
         nav {
             position: sticky;
             top: 0;
-            background: rgba(13, 79, 79, 0.96);
+            background: linear-gradient(90deg, rgba(8, 44, 28, 0.97) 0%, rgba(14, 62, 41, 0.97) 50%, rgba(8, 44, 28, 0.97) 100%);
             backdrop-filter: blur(12px);
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.65);
         }
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #f4d088 0%, #0ea5a5 100%);
+            background: linear-gradient(135deg, #fff1be 0%, #e5be54 55%, #f59e0b 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+
+        .logo-emoji {
+            -webkit-text-fill-color: initial;
+            font-size: 1.5rem;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.8rem;
+            gap: 1.35rem;
             align-items: center;
         }
 
         nav a {
-            color: #fef5f0;
+            color: #fff8ef;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
+            white-space: nowrap;
         }
 
         nav a::after {
@@ -235,7 +394,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gold);
+            background: var(--gold-light);
             transition: width 0.3s;
         }
 
@@ -244,13 +403,47 @@
         }
 
         nav a:hover {
-            color: var(--gold);
+            color: var(--gold-light);
+        }
+
+        .nav-voucher-link {
+            background: linear-gradient(135deg, #c41e3a 0%, #8c1420 100%);
+            padding: 0.45rem 0.95rem;
+            border-radius: 999px;
+            border: 1px solid var(--gold-light);
+            font-weight: 600;
+            color: #fffaf0 !important;
+            box-shadow: 0 0 14px rgba(196, 30, 58, 0.45);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+
+        .nav-voucher-link::after {
+            display: none;
+        }
+
+        .nav-voucher-link:hover {
+            background: linear-gradient(135deg, #dc2626 0%, #a3162b 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.45);
+        }
+
+        .nav-offer-tag {
+            background: var(--gold-light);
+            color: #7f1019;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 0.1rem 0.4rem;
+            border-radius: 999px;
+            letter-spacing: 0.2px;
         }
 
         .mobile-toggle {
             display: none;
             font-size: 1.8rem;
-            color: white;
+            color: var(--gold-light);
             cursor: pointer;
         }
 
@@ -272,40 +465,44 @@
             height: 36px;
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(201, 169, 97, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.5);
         }
 
-        /* Adjust for smaller screens */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .header-social-links {
                 margin-right: 0.5rem;
             }
         }
 
-        /* Mobile Dropdown Styles */
-        @media screen and (max-width: 768px) {
+        /* Mobile / Tablet Dropdown Styles */
+        @media screen and (max-width: 1024px) {
             #nav-menu {
-                display: none; /* Hidden by default on mobile until toggled */
+                display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: #1a1a1a; /* Match your header theme background */
+                background: linear-gradient(180deg, #0b3d28 0%, #07281a 100%);
                 padding: 1.5rem 0;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+                border-bottom: 2px solid var(--gold);
+                pointer-events: none;
             }
 
-            /* Class toggled by toggleMenu() JS function */
             #nav-menu.active {
                 display: flex;
+                pointer-events: auto;
             }
 
-            /* Social icons container in mobile dropdown */
+            .mobile-toggle {
+                display: block;
+            }
+
             .nav-social-li {
                 margin-top: 1rem;
                 padding-top: 1rem;
-                border-top: 1px solid rgba(255, 255, 255, 0.1); /* Optional divider line */
+                border-top: 1px solid rgba(212, 175, 55, 0.25);
                 width: 100%;
                 display: flex;
                 justify-content: center;
@@ -317,60 +514,137 @@
             }
         }
 
-        
-
 
         /* ==========================================
-           4. HERO SECTION
+           4. HERO SECTION (VIBRANT CHRISTMAS)
            ========================================== */
         .hero {
             min-height: 90vh;
-            background: linear-gradient(135deg, var(--secondary) 0%, #093b3b 100%);
+            background:
+                radial-gradient(circle at 20% 20%, rgba(196, 30, 58, 0.45) 0%, transparent 45%),
+                radial-gradient(circle at 82% 28%, rgba(212, 175, 55, 0.25) 0%, transparent 42%),
+                radial-gradient(circle at 50% 85%, rgba(196, 30, 58, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, #092e1e 0%, #0f452d 42%, #4a0e1b 82%, #72101f 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 4rem 2rem;
+            padding: 4.5rem 2rem 5rem;
             text-align: center;
+            overflow: hidden;
+        }
+
+        /* Subtle Golden Starry Sparkle Pattern in Hero */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(2px 2px at 14% 24%, rgba(255, 240, 180, 0.75), transparent),
+                radial-gradient(2px 2px at 28% 68%, rgba(255, 255, 255, 0.55), transparent),
+                radial-gradient(3px 3px at 42% 18%, rgba(250, 224, 140, 0.7), transparent),
+                radial-gradient(2px 2px at 66% 22%, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(3px 3px at 84% 62%, rgba(250, 224, 140, 0.7), transparent),
+                radial-gradient(2px 2px at 90% 18%, rgba(255, 220, 130, 0.7), transparent),
+                radial-gradient(2px 2px at 10% 78%, rgba(255, 240, 180, 0.6), transparent);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Decorative Gold Border Bottom on Hero */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--festive-red), var(--gold-light), var(--festive-green), var(--gold-light), var(--festive-red));
+            z-index: 3;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 840px;
         }
 
         .hero-logo {
-            max-height: 180px;
+            max-height: 175px;
             width: auto;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+            margin-bottom: 1.25rem;
+            filter: drop-shadow(0 0 24px rgba(212, 175, 55, 0.55)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
         }
 
         .tagline {
-            font-size: 0.85rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-            letter-spacing: 4px;
+            font-size: 0.88rem;
+            color: var(--gold-light);
+            margin-bottom: 0.9rem;
+            letter-spacing: 3.5px;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
 
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.8rem, 7vw, 4.8rem);
+            font-size: clamp(2.8rem, 7vw, 5rem);
             font-weight: 900;
             color: #ffffff;
-            margin-bottom: 0.8rem;
-            letter-spacing: 2px;
-            line-height: 1.1;
+            margin-bottom: 0.7rem;
+            letter-spacing: 2.5px;
+            line-height: 1.08;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45), 0 0 32px rgba(212, 175, 55, 0.25);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            color: rgba(255, 248, 238, 0.93);
+            margin-bottom: 1.8rem;
+            font-weight: 400;
+        }
+
+        .hero-offer-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.92) 0%, rgba(127, 16, 25, 0.95) 100%);
+            border: 2px solid var(--gold-light);
+            border-radius: 999px;
+            padding: 0.7rem 1.5rem;
+            margin-bottom: 2.2rem;
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), 0 0 22px rgba(212, 175, 55, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            animation: softPulse 3s ease-in-out infinite;
+        }
+
+        .hero-offer-pill:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45), 0 0 28px rgba(250, 224, 140, 0.55);
+        }
+
+        .hero-offer-pill .pill-highlight {
+            background: var(--gold-light);
+            color: #7f1019;
+            font-weight: 800;
+            padding: 0.18rem 0.65rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+        }
+
+        @keyframes softPulse {
+            0%, 100% {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), 0 0 18px rgba(212, 175, 55, 0.35);
+            }
+            50% {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), 0 0 32px rgba(250, 224, 140, 0.65);
+            }
         }
 
         .cta-buttons {
@@ -400,9 +674,10 @@
             height: 100%;
             min-height: 400px;
             position: relative;
-            border-radius: 16px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 14px 36px rgba(127, 16, 25, 0.16);
+            border: 3px solid rgba(212, 175, 55, 0.55);
         }
 
         .about-image {
@@ -410,14 +685,16 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            object-position: center 50%; /* adjust % to shift which part shows */
+            object-position: center 50%;
         }
 
         .about-text {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             padding: 2.5rem;
-            border-radius: 16px;
+            border-radius: 18px;
             backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 12px 32px rgba(11, 61, 40, 0.07);
         }
 
         .about-text h3 {
@@ -433,7 +710,7 @@
         .about-text p {
             font-size: 1.05rem;
             line-height: 1.8;
-            color: #4a5568;
+            color: #4a403d;
             margin-bottom: 1.25rem;
         }
 
@@ -449,17 +726,21 @@
         }
 
         .highlight-item {
-            background: #ffffff;
+            background: #fffdf9;
             padding: 1.2rem;
             border-radius: 12px;
-            border-left: 4px solid var(--primary);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            border-left: 4px solid var(--festive-red);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-item:nth-child(2) {
+            border-left-color: var(--secondary);
         }
 
         .highlight-title {
             display: block;
             font-weight: 700;
-            color: var(--primary-dark);
+            color: var(--secondary);
             margin-bottom: 0.3rem;
             font-size: 0.95rem;
         }
@@ -516,7 +797,7 @@
             text-align: center;
             font-size: 3rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.25);
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
@@ -541,16 +822,36 @@
         /* ==========================================
            7. MENU SECTION
            ========================================== */
+        #menu-section {
+            background: linear-gradient(180deg, #fffdf9 0%, #fcf4e8 100%) !important;
+            border-radius: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 14px 40px rgba(11, 61, 40, 0.06);
+        }
+
+        #menu-grid .menu-item {
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            border-left: 3px solid var(--festive-red);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        #menu-grid .menu-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(127, 16, 25, 0.1) !important;
+            border-left-color: var(--gold);
+        }
+
         .allergen-badge {
-            background-color: #f0e6d2;
-            color: #c4953c;
+            background-color: #f8eed8;
+            color: #9f6f16;
             font-size: 0.75rem;
-            padding: 0.1rem 0.4rem;
+            padding: 0.12rem 0.45rem;
             border-radius: 4px;
-            margin-left: 0.5rem;
+            margin-left: 0.45rem;
             font-family: sans-serif;
             vertical-align: middle;
             cursor: help;
+            border: 1px solid rgba(212, 175, 55, 0.35);
         }
 
         .menu-grid {
@@ -584,15 +885,8 @@
         }
 
         .menu-item {
-            margin-bottom: 1.4rem;
-            padding-bottom: 1.2rem;
-            border-bottom: 1px dashed #e5e5e5;
-        }
-
-        .menu-item:last-child {
             margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
+            padding-bottom: 1.5rem;
         }
 
         .menu-item-header {
@@ -621,13 +915,328 @@
 
 
         /* ==========================================
-           8. VOUCHER SECTION
+           8. VOUCHER SECTION & CHRISTMAS OFFER SPOTLIGHT
            ========================================== */
-        .voucher-grid {
+        .christmas-offer-banner {
+            background:
+                radial-gradient(circle at 12% 20%, rgba(250, 224, 140, 0.22) 0%, transparent 45%),
+                radial-gradient(circle at 88% 80%, rgba(20, 83, 45, 0.45) 0%, transparent 50%),
+                linear-gradient(135deg, #8c1420 0%, #c41e3a 48%, #7f1019 100%);
+            border: 2px solid var(--gold-light);
+            border-radius: 22px;
+            padding: 2rem 2.2rem;
+            margin: 0 auto 2.8rem;
+            max-width: 1080px;
+            color: #fffaf0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 42px rgba(127, 16, 25, 0.28), 0 0 0 4px rgba(212, 175, 55, 0.16);
+        }
+
+        .christmas-offer-banner::before {
+            content: '❄ ✦ 🎄 ✦ ❄';
+            position: absolute;
+            top: 0.65rem;
+            right: 1.4rem;
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            color: rgba(250, 224, 140, 0.45);
+            pointer-events: none;
+        }
+
+        .offer-banner-left {
+            flex: 1 1 420px;
+            text-align: left;
+        }
+
+        .offer-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(250, 224, 140, 0.18);
+            border: 1px solid var(--gold-light);
+            color: var(--gold-light);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            padding: 0.3rem 0.85rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+
+        .christmas-offer-banner h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .christmas-offer-banner h3 span {
+            color: var(--gold-light);
+        }
+
+        .christmas-offer-banner p {
+            font-size: 0.96rem;
+            color: rgba(255, 248, 238, 0.92);
+            margin: 0;
+        }
+
+        .offer-banner-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        .offer-deadline-box {
+            background: rgba(8, 38, 24, 0.85);
+            border: 1.5px solid var(--gold-light);
+            border-radius: 14px;
+            padding: 0.75rem 1.25rem;
+            text-align: center;
+            min-width: 220px;
+        }
+
+        .offer-deadline-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        .offer-deadline-date {
+            display: block;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-top: 0.15rem;
+        }
+
+        .offer-countdown {
+            display: block;
+            font-size: 0.8rem;
+            color: #bbf7d0;
+            margin-top: 0.2rem;
+            font-weight: 600;
+        }
+
+        /* Featured Christmas Bonus Vouchers Grid (€50 -> €60 & €100 -> €120) */
+        .featured-vouchers-grid {
+            max-width: 1080px;
+            margin: 0 auto 3rem;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
-            max-width: 900px;
+            align-items: stretch;
+        }
+
+        .voucher-featured-card {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #ffffff 0%, #fffaf0 60%, #fef2f2 100%);
+            border-radius: 22px;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+            box-shadow:
+                0 20px 50px rgba(127, 16, 25, 0.22),
+                0 0 0 5px rgba(196, 30, 58, 0.12),
+                0 0 32px rgba(212, 175, 55, 0.35);
+            position: relative;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            animation: featuredGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes featuredGlow {
+            0%, 100% {
+                box-shadow:
+                    0 20px 50px rgba(127, 16, 25, 0.22),
+                    0 0 0 5px rgba(196, 30, 58, 0.12),
+                    0 0 26px rgba(212, 175, 55, 0.3);
+            }
+            50% {
+                box-shadow:
+                    0 24px 56px rgba(127, 16, 25, 0.28),
+                    0 0 0 6px rgba(212, 175, 55, 0.22),
+                    0 0 42px rgba(212, 175, 55, 0.55);
+            }
+        }
+
+        .voucher-featured-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .featured-ribbon {
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(90deg, #7f1019 0%, #c41e3a 50%, #7f1019 100%);
+            color: var(--gold-light);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+            padding: 0.55rem 1rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .featured-image-col {
+            position: relative;
+            background: linear-gradient(135deg, #5a0b15 0%, #0b3d28 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.15rem;
+        }
+
+        .featured-image-col img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+            border: 2px solid rgba(250, 224, 140, 0.7);
+            transition: transform 0.4s ease;
+        }
+
+        .voucher-featured-card:hover .featured-image-col img {
+            transform: scale(1.02);
+        }
+
+        .featured-body-col {
+            padding: 1.85rem 1.9rem 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .featured-body-top {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-tag-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .bonus-pill {
+            background: linear-gradient(135deg, #0b3d28 0%, #14532d 100%);
+            color: var(--gold-light);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.28rem 0.8rem;
+            border-radius: 999px;
+            border: 1px solid var(--gold);
+        }
+
+        .deadline-pill {
+            background: #fef2f2;
+            color: #b91c1c;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.28rem 0.8rem;
+            border-radius: 999px;
+            border: 1px solid rgba(185, 28, 28, 0.35);
+        }
+
+        .featured-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--secondary);
+            line-height: 1.15;
+            margin-bottom: 0.8rem;
+        }
+
+        .value-equation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            background: linear-gradient(135deg, #fff6e0 0%, #fde8e8 100%);
+            border: 1.5px dashed var(--festive-red);
+            border-radius: 14px;
+            padding: 0.85rem 1.1rem;
+            margin-bottom: 1.05rem;
+        }
+
+        .pay-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #4a403d;
+        }
+
+        .pay-price strong {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .value-arrow {
+            font-size: 1.25rem;
+            color: var(--festive-red);
+            font-weight: 800;
+        }
+
+        .get-value {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--festive-red);
+        }
+
+        .get-value strong {
+            font-size: 1.75rem;
+            color: #b91c1c;
+        }
+
+        .voucher-featured-card .voucher-desc {
+            text-align: left;
+            color: #554844;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .voucher-featured-card .voucher-benefits {
+            margin-bottom: 1.5rem;
+        }
+
+        .voucher-featured-card .benefit-item.highlight-benefit {
+            color: #8c1420;
+            font-weight: 700;
+        }
+
+        .other-vouchers-heading {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--secondary);
+            margin-bottom: 1.6rem;
+            opacity: 0.9;
+        }
+
+        /* Standard Vouchers 3-Column Grid */
+        .voucher-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            max-width: 1080px;
             margin: 0 auto;
         }
 
@@ -635,15 +1244,17 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: 16px;
             background-color: #ffffff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .voucher-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 16px 38px rgba(11, 61, 40, 0.14);
+            border-color: var(--gold);
         }
 
         .voucher-image-wrapper {
@@ -657,10 +1268,15 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .voucher-card:hover .voucher-image {
+            transform: scale(1.03);
         }
 
         .voucher-body {
-            padding: 2rem;
+            padding: 1.7rem;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -669,43 +1285,47 @@
         }
 
         .voucher-desc {
-            color: #666;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            color: #5c514d;
+            margin-bottom: 1.3rem;
+            font-size: 0.93rem;
         }
 
         .voucher-benefits {
             text-align: left;
-            margin-bottom: 2rem;
+            margin-bottom: 1.6rem;
         }
 
         .benefit-item {
-            margin-bottom: 0.6rem;
-            color: #555;
-            font-size: 0.9rem;
+            margin-bottom: 0.55rem;
+            color: #4d4542;
+            font-size: 0.88rem;
             display: flex;
             gap: 0.5rem;
-            align-items: center;
+            align-items: flex-start;
         }
 
 
         /* ==========================================
-           9. RESERVATION SECTION
+           9. RESERVATION SECTION (FESTIVE ROYAL)
            ========================================== */
         #reservation-container {
-            background: linear-gradient(135deg, var(--secondary) 0%, #093b3b 100%);
+            background:
+                radial-gradient(circle at 12% 15%, rgba(196, 30, 58, 0.38) 0%, transparent 45%),
+                radial-gradient(circle at 88% 85%, rgba(212, 175, 55, 0.22) 0%, transparent 45%),
+                linear-gradient(135deg, #092e1e 0%, #0d4029 55%, #5c101e 100%);
             border-radius: 24px;
             padding: 3.5rem 2rem;
-            color: #f9f4ed;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            color: #fff8ef;
+            border: 2px solid rgba(212, 175, 55, 0.55);
+            box-shadow: 0 22px 55px rgba(11, 61, 40, 0.25);
         }
 
         #reservation-container .section-title {
-            color: var(--gold);
+            color: var(--gold-light);
         }
 
         #reservation-container .section-subtitle {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 248, 238, 0.86);
         }
 
         .form-container {
@@ -734,11 +1354,11 @@
         input, select, textarea {
             width: 100%;
             padding: 0.85rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(250, 224, 140, 0.28);
             border-radius: 10px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
             transition: all 0.3s;
         }
@@ -749,14 +1369,14 @@
         }
 
         input::placeholder, textarea::placeholder {
-            color: rgba(255, 255, 255, 0.45);
+            color: rgba(255, 255, 255, 0.5);
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.2);
+            background: rgba(255, 255, 255, 0.16);
+            border-color: var(--gold-light);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.28);
         }
 
 
@@ -772,18 +1392,29 @@
         .contact-card {
             background: white;
             padding: 2.5rem 1.5rem;
-            border-radius: 16px;
+            border-radius: 18px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(11, 61, 40, 0.07);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-top: 4px solid var(--festive-red);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-card:nth-child(2) {
+            border-top-color: var(--secondary);
+        }
+
+        .contact-card:nth-child(3) {
+            border-top-color: var(--gold);
         }
 
         .contact-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 36px rgba(127, 16, 25, 0.12);
         }
 
         .contact-icon {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             margin-bottom: 1rem;
         }
 
@@ -794,25 +1425,34 @@
         }
 
         .contact-card p {
-            color: #666;
+            color: #5c514d;
             font-size: 0.95rem;
             line-height: 1.6;
         }
 
 
         /* ==========================================
-           11. FOOTER
+           11. FOOTER (FESTIVE EVERGREEN & GOLD)
            ========================================== */
         footer {
-            background: var(--dark);
-            color: #fef5f0;
+            background: linear-gradient(135deg, #07281a 0%, #0b3d28 55%, #4a0e1b 100%);
+            color: #fff8ef;
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 3.5rem 2rem;
             margin-top: 3rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-greeting {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-bottom: 1.25rem;
         }
 
         footer p {
-            opacity: 0.8;
+            opacity: 0.85;
             font-size: 0.9rem;
         }
 
@@ -831,18 +1471,18 @@
             height: 45px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.08);
-            color: var(--gold);
+            color: var(--gold-light);
             font-size: 1.3rem;
             text-decoration: none;
             transition: all 0.3s ease;
-            border: 1px solid rgba(201, 169, 97, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.45);
         }
 
         .social-icon:hover {
             background: var(--gold);
-            color: var(--dark);
+            color: var(--secondary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.4);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.45);
         }
 
 
@@ -874,6 +1514,7 @@
             max-width: 480px;
             width: 90%;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--gold);
             position: relative;
         }
 
@@ -931,31 +1572,18 @@
             .about-badge {
                 padding: 2.5rem 1.5rem;
             }
+
+            .featured-vouchers-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+
+            .voucher-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--secondary);
-                padding: 1.5rem 0;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-                pointer-events: none; 
-            }
-
-            nav ul.active {
-                display: flex;
-                pointer-events: auto;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-
             .about-section {
                 background-image: url('images/bg_image.png');
                 background-size: cover;
@@ -966,6 +1594,20 @@
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .christmas-offer-banner {
+                padding: 1.6rem 1.4rem;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .offer-banner-left {
+                text-align: center;
+            }
+
+            .featured-body-col {
+                padding: 1.6rem 1.4rem;
             }
 
             .voucher-grid {
@@ -999,6 +1641,12 @@
             .about-text p {
                 font-size: 1rem;
             }
+
+            .hero-offer-pill {
+                border-radius: 16px;
+                padding: 0.75rem 1rem;
+                font-size: 0.88rem;
+            }
         }
     </style>
 </head>
@@ -1006,10 +1654,12 @@
 
 <body>
 
+    <!-- Subtle Animated Festive Snowfall -->
+    <canvas id="snow-canvas" aria-hidden="true"></canvas>
 
     <!-- Navigation -->
     <nav>
-        <div class="logo" onclick="smoothScrollTo('home')">🏰 BOMBAY PALACE</div>
+        <div class="logo" onclick="smoothScrollTo('home')"><span class="logo-emoji">🎄</span> BOMBAY PALACE</div>
         
         <div class="nav-right">
             <ul id="nav-menu">
@@ -1017,7 +1667,11 @@
                 <li><a onclick="smoothScrollTo('about')">About</a></li>
                 <li><a onclick="smoothScrollTo('gallery')">Gallery</a></li>
                 <li><a onclick="smoothScrollTo('menu-section')">Menu</a></li>
-                <li><a onclick="smoothScrollTo('vouchers')">Vouchers</a></li>
+                <li>
+                    <a class="nav-voucher-link" onclick="smoothScrollTo('vouchers')">
+                        🎁 Vouchers <span class="nav-offer-tag">+20% BONUS</span>
+                    </a>
+                </li>
                 <li><a onclick="smoothScrollTo('reservation')">Reserve</a></li>
                 <li><a onclick="smoothScrollTo('contact')">Contact</a></li>
                 
@@ -1039,26 +1693,55 @@
     </nav>
 
     
-    <!-- Moving Notice Bar -->
-    <!--
-    <div class="notice-bar">
+    <!-- Festive Moving Notice Bar -->
+    <div class="notice-bar" onclick="smoothScrollTo('christmas-bonus-vouchers')" role="button" tabindex="0" aria-label="View Christmas bonus voucher offers">
         <div class="notice-track">
-            <i class="fa-solid fa-circle-info"></i> <strong>CUSTOMERS KINDLY NOTE THAT WE WILL BE CLOSED ON TUESDAY 25TH AUGUST 2026 FOR MAINTENANCE.</strong>
+            🎄 <strong>CHRISTMAS BONUS PROMO:</strong> Buy a <strong>€100 Voucher → Get €120 Value (+€20 FREE!)</strong> &nbsp;|&nbsp; Buy a <strong>€50 Voucher → Get €60 Value (+€10 FREE!)</strong> &nbsp;•&nbsp; Purchase by <strong>15th December</strong> (Vouchers Never Expire!) &nbsp;•&nbsp; <strong>Click Here to Claim Now!</strong> 🎁 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✨ <strong>SEASON'S GREETINGS FROM BOMBAY PALACE CORK!</strong> Book Your Festive Table Today 🍽️
         </div>
     </div>
-    -->
+
+    <!-- Festive Twinkling Fairy Lights Strand -->
+    <div class="christmas-lights" aria-hidden="true">
+        <span class="light-bulb red"></span>
+        <span class="light-bulb gold"></span>
+        <span class="light-bulb green"></span>
+        <span class="light-bulb warm"></span>
+        <span class="light-bulb red"></span>
+        <span class="light-bulb gold"></span>
+        <span class="light-bulb green"></span>
+        <span class="light-bulb warm"></span>
+        <span class="light-bulb red"></span>
+        <span class="light-bulb gold"></span>
+        <span class="light-bulb green"></span>
+        <span class="light-bulb warm"></span>
+        <span class="light-bulb red"></span>
+        <span class="light-bulb gold"></span>
+        <span class="light-bulb green"></span>
+        <span class="light-bulb warm"></span>
+        <span class="light-bulb red"></span>
+        <span class="light-bulb gold"></span>
+        <span class="light-bulb green"></span>
+        <span class="light-bulb warm"></span>
+    </div>
 
 
     <!-- Hero Section -->
     <div id="home" class="hero">
         <div class="hero-content">
             <img src="images/logo/logo_gold.png" alt="Bombay Palace Cork Logo" class="hero-logo" onerror="this.style.display='none'">
-            <div class="tagline">✨ Proudly Serving Cork for 28 Years ✨</div>
+            <div class="tagline">❄️ Season's Greetings • Proudly Serving Cork for 28 Years 🎄</div>
             <h1>BOMBAY PALACE</h1>
-            <p>Where Every Dish Tells a Story</p>
+            <p>Where Every Dish Tells a Story — Celebrate This Festive Season With Us</p>
+
+            <!-- Hero Christmas Voucher Offer Callout -->
+            <div class="hero-offer-pill" onclick="smoothScrollTo('christmas-bonus-vouchers')" role="button" tabindex="0">
+                <span>🎁 <strong>Christmas Bonus Promo:</strong> €100 → <strong>€120</strong> &amp; €50 → <strong>€60</strong> Vouchers</span>
+                <span class="pill-highlight">Buy by 15th Dec • No Expiry →</span>
+            </div>
+
             <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="smoothScrollTo('reservation')">🍽️ Reserve Now</button>
-                <button class="btn btn-secondary" onclick="smoothScrollTo('vouchers')">💝 Buy Vouchers</button>
+                <button class="btn btn-primary" onclick="smoothScrollTo('reservation')">🍽️ Reserve Festive Table</button>
+                <button class="btn btn-festive" onclick="smoothScrollTo('christmas-bonus-vouchers')">🎁 Claim Christmas Vouchers</button>
             </div>
         </div>
     </div>
@@ -1069,7 +1752,8 @@
     <section id="about" class="about-section">
         <div class="section-header">
             <h2 class="section-title">About Us</h2>
-            <p class="section-subtitle">Experience the magic of authentic Indian dining in Cork</p>
+            <div class="festive-divider" aria-hidden="true">❄ ✦ 🎄 ✦ ❄</div>
+            <p class="section-subtitle">Experience the warmth &amp; magic of authentic Indian dining in Cork this festive season</p>
         </div>
         
         <div class="about-grid">
@@ -1085,18 +1769,18 @@
                     Bombay Palace brings the rich, diverse culinary heritage of India straight to Cork City. Our experienced chefs prepare each dish using traditional techniques, freshly ground spice blends, and locally sourced ingredients.
                 </p>
                 <p>
-                    Whether you are dining in with family or celebrating a special occasion, we offer an inviting atmosphere filled with warmth and hospitality.
+                    Whether you are dining in with family, hosting a Christmas gathering, or celebrating a special occasion, we offer an inviting atmosphere filled with warmth and hospitality.
                 </p>
 
                 <!-- Feature Highlights -->
                 <div class="about-highlights">
                     <div class="highlight-item">
-                        <span class="highlight-title">Authentic Recipes</span>
+                        <span class="highlight-title">✨ Authentic Recipes</span>
                         <span class="highlight-desc">Crafted with hand-selected Indian spices and fresh ingredients.</span>
                     </div>
                     <div class="highlight-item">
-                        <span class="highlight-title">Warm Hospitality</span>
-                        <span class="highlight-desc">An inviting ambiance perfect for family gatherings & celebrations.</span>
+                        <span class="highlight-title">🎄 Festive Hospitality</span>
+                        <span class="highlight-desc">An inviting ambiance perfect for family gatherings &amp; Christmas celebrations.</span>
                     </div>
                 </div>
             </div>
@@ -1124,10 +1808,11 @@
    
 
     <!-- Menu Section -->
-    <section id="menu-section" style="padding: 4rem 2rem; background-color: #faf9f6; color: #2d2d2d;">
-        <div style="text-align: center; margin-bottom: 3rem;">
-            <h2 style="font-size: 2.5rem; color: #c4953c; margin-bottom: 0.5rem; font-family: serif;">Our Authentic Menu</h2>
-            <p style="opacity: 0.7; font-style: italic;">Savor the traditional flavors of Bombay Palace Cork</p>
+    <section id="menu-section" style="padding: 4rem 2rem; background-color: #fffdf9; color: #2d2d2d;">
+        <div class="section-header" style="margin-bottom: 2.5rem;">
+            <h2 class="section-title">Our Authentic Menu</h2>
+            <div class="festive-divider" aria-hidden="true">❄ ✦ 🎄 ✦ ❄</div>
+            <p class="section-subtitle" style="font-style: italic;">Savor the traditional, vibrant flavors of Bombay Palace Cork</p>
         </div>
         
 
@@ -1702,8 +2387,8 @@
         </div>
 
         <!-- Allergen Key Block -->
-        <div style="text-align: center; margin-bottom: 2rem; font-size: 0.85rem; opacity: 0.8; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-            <strong>Allergen Key:</strong> 
+        <div style="text-align: center; margin-top: 2.5rem; margin-bottom: 1rem; padding-top: 1.5rem; border-top: 1px dashed rgba(212, 175, 55, 0.45); font-size: 0.85rem; opacity: 0.85; max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+            <strong style="display: block; margin-bottom: 0.3rem; color: var(--secondary);">Allergen Key</strong>
             <span style="margin: 0 0.5rem;"><strong>[G]</strong> Gluten</span> | 
             <span style="margin: 0 0.5rem;"><strong>[D]</strong> Dairy</span> | 
             <span style="margin: 0 0.5rem;"><strong>[N]</strong> Nuts</span> | 
@@ -1715,24 +2400,28 @@
 
     </section>
 
-    <!-- Add matching tab button styles to your existing internal <style> block -->
+    <!-- Festive Menu Tab Button Styles -->
     <style>
         .menu-tab-btn {
-            background: #ece9e2;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            font-weight: bold;
+            background: #f5ede0;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            padding: 0.6rem 1.25rem;
+            border-radius: 999px;
+            font-weight: 600;
             cursor: pointer;
-            color: #555;
-            transition: all 0.2s ease-in-out;
+            color: #4a3f3b;
+            transition: all 0.25s ease-in-out;
         }
         .menu-tab-btn:hover {
-            background: #e2d9c5;
+            background: #fce7e7;
+            border-color: var(--festive-red);
+            color: var(--festive-red-dark);
         }
         .menu-tab-btn.active {
-            background: #c4953c;
-            color: white;
+            background: linear-gradient(135deg, #c41e3a 0%, #8c1420 100%);
+            border-color: var(--gold);
+            color: #fffaf0;
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
         }
     </style>
 
@@ -1741,12 +2430,106 @@
     <!-- Voucher Section -->
     <section id="vouchers">
         <div class="section-header">
-            <h2 class="section-title">Gift Vouchers</h2>
-            <p class="section-subtitle">Treat friends and family to an authentic dining experience</p>
+            <h2 class="section-title">🎄 Festive Gift Vouchers 🎁</h2>
+            <div class="festive-divider" aria-hidden="true">❄ ✦ 🎁 ✦ ❄</div>
+            <p class="section-subtitle">Treat friends, family &amp; loved ones to an unforgettable Christmas dining experience</p>
         </div>
 
         <!-- Hidden Gift Up container for background script initialization -->
         <div class="gift-up-target" data-site-id="8e00666c-b611-4a5d-85a4-c2d3faf07d1e" data-platform="Other" style="display: none !important;"></div>
+
+        <!-- Christmas Bonus Voucher Promo Banner -->
+        <div class="christmas-offer-banner">
+            <div class="offer-banner-left">
+                <div class="offer-eyebrow">🎄 Limited-Time Christmas Bonus Promotion</div>
+                <h3>Buy <span>€100 → Get €120</span> &nbsp;or&nbsp; Buy <span>€50 → Get €60!</span></h3>
+                <p>Give more joy this festive season — enjoy <strong>+€20 FREE on our €100 voucher</strong> or <strong>+€10 FREE on our €50 voucher</strong> when purchased on or before 15th December. <strong>Your voucher never expires</strong> and can be redeemed anytime for dine-in or takeaway!</p>
+            </div>
+            <div class="offer-banner-right">
+                <div class="offer-deadline-box">
+                    <span class="offer-deadline-label">⏳ Bonus Promo Ends</span>
+                    <span class="offer-deadline-date">15th December</span>
+                    <span class="offer-countdown" id="offer-countdown">Purchase before 15th Dec!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Christmas Special Offer Vouchers (€100 -> €120 first, followed by €50 -> €60) -->
+        <div id="christmas-bonus-vouchers" class="featured-vouchers-grid">
+            <!-- €100 -> €120 Voucher (Top / First) -->
+            <div id="voucher-100-offer" class="voucher-featured-card">
+                <div class="featured-ribbon">🎄 BEST VALUE • +€20 FREE BONUS</div>
+                <div class="featured-image-col">
+                    <img src="images/vouchers/voucher_100_christmas.png" alt="€100 Christmas Bonus Voucher — Get €120 Value (Buy by 15th December, No Expiry)">
+                </div>
+                <div class="featured-body-col">
+                    <div class="featured-body-top">
+                        <div class="featured-tag-row">
+                            <span class="bonus-pill">⭐ BEST VALUE • +€20 ON US</span>
+                            <span class="deadline-pill">⏰ Buy by 15th Dec</span>
+                        </div>
+                        <h3 class="featured-title">€100 Christmas Bonus Voucher</h3>
+                        <div class="value-equation">
+                            <span class="pay-price">You Pay <strong>€100</strong></span>
+                            <span class="value-arrow">→</span>
+                            <span class="get-value">Get <strong>€120</strong> Value!</span>
+                        </div>
+                        <div class="voucher-desc">The ultimate festive feast gift for families &amp; group celebrations — with an extra €20 bonus included exclusively for Christmas.</div>
+                        <div class="voucher-benefits">
+                            <div class="benefit-item highlight-benefit">🎁 Christmas Bonus: €100 purchase gives €120 dining credit (+€20 FREE)</div>
+                            <div class="benefit-item highlight-benefit">⏰ Bonus promotion available to purchase until 15th December</div>
+                            <div class="benefit-item">✓ Voucher never expires — redeem anytime indefinitely</div>
+                            <div class="benefit-item">✓ Valid for Dine-in or Takeaway</div>
+                            <div class="benefit-item">✓ Instant email delivery with QR code</div>
+                        </div>
+                    </div>
+                    <a href="https://checkout.yourgift.cards/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?productId=fc6dcf04-c517-4806-2817-08df468325ec&amp;language=en-GB"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn-festive"
+                       style="width: 100%; font-size: 1rem; padding: 0.95rem 1.4rem;"
+                       data-gift-up-open>🎁 Buy €100 Voucher — Get €120 Value</a>
+                </div>
+            </div>
+
+            <!-- €50 -> €60 Voucher (Second) -->
+            <div id="voucher-50-offer" class="voucher-featured-card">
+                <div class="featured-ribbon">🎄 CHRISTMAS SPECIAL • +€10 FREE BONUS</div>
+                <div class="featured-image-col">
+                    <img src="images/vouchers/voucher_50_christmas.png" alt="€50 Christmas Bonus Voucher — Get €60 Value (Buy by 15th December, No Expiry)">
+                </div>
+                <div class="featured-body-col">
+                    <div class="featured-body-top">
+                        <div class="featured-tag-row">
+                            <span class="bonus-pill">🎁 +€10 BONUS ON US</span>
+                            <span class="deadline-pill">⏰ Buy by 15th Dec</span>
+                        </div>
+                        <h3 class="featured-title">€50 Christmas Bonus Voucher</h3>
+                        <div class="value-equation">
+                            <span class="pay-price">You Pay <strong>€50</strong></span>
+                            <span class="value-arrow">→</span>
+                            <span class="get-value">Get <strong>€60</strong> Value!</span>
+                        </div>
+                        <div class="voucher-desc">Ideal for a memorable evening dining celebration — with an extra €10 bonus included exclusively for Christmas.</div>
+                        <div class="voucher-benefits">
+                            <div class="benefit-item highlight-benefit">🎁 Christmas Bonus: €50 purchase gives €60 dining credit (+€10 FREE)</div>
+                            <div class="benefit-item highlight-benefit">⏰ Bonus promotion available to purchase until 15th December</div>
+                            <div class="benefit-item">✓ Voucher never expires — redeem anytime indefinitely</div>
+                            <div class="benefit-item">✓ Valid for Dine-in or Takeaway</div>
+                            <div class="benefit-item">✓ Instant email delivery with QR code</div>
+                        </div>
+                    </div>
+                    <a href="https://checkout.yourgift.cards/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?productId=8cfc5690-91dc-4557-2818-08df468325ec&amp;language=en-GB"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn-festive"
+                       style="width: 100%; font-size: 1rem; padding: 0.95rem 1.4rem;"
+                       data-gift-up-open>🎁 Buy €50 Voucher — Get €60 Value</a>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="other-vouchers-heading">✨ More Gift Voucher Options ✨</h3>
 
         <div class="voucher-grid">
             <!-- €5 Voucher -->
@@ -1761,8 +2544,9 @@
                         <div class="benefit-item">✓ Valid for Dine-in or Takeaway</div>
                         <div class="benefit-item">✓ Instant email delivery with QR code</div>
                     </div>
-                    <a href="https://giftup.app/place-order/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?value=5" 
+                    <a href="https://checkout.yourgift.cards/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?productId=2d09b663-e13c-414d-0f06-08deef7ecd9a&amp;language=en-GB" 
                     target="_blank" 
+                    rel="noopener noreferrer"
                     class="btn btn-primary" 
                     data-gift-up-open>Buy Now</a>
                 </div>
@@ -1780,8 +2564,9 @@
                         <div class="benefit-item">✓ Valid for Dine-in or Takeaway</div>
                         <div class="benefit-item">✓ Instant email delivery with QR code</div>
                     </div>
-                    <a href="https://giftup.app/place-order/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?value=10" 
+                    <a href="https://checkout.yourgift.cards/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?productId=b5abe9dd-787d-4191-0f07-08deef7ecd9a&amp;language=en-GB" 
                     target="_blank" 
+                    rel="noopener noreferrer"
                     class="btn btn-primary" 
                     data-gift-up-open>Buy Now</a>
                 </div>
@@ -1799,27 +2584,9 @@
                         <div class="benefit-item">✓ Valid for Dine-in or Takeaway</div>
                         <div class="benefit-item">✓ Instant email delivery with QR code</div>
                     </div>
-                    <a href="https://giftup.app/place-order/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?value=30" 
+                    <a href="https://checkout.yourgift.cards/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?productId=a3ceee26-b29d-4c45-0f08-08deef7ecd9a&amp;language=en-GB" 
                     target="_blank" 
-                    class="btn btn-primary" 
-                    data-gift-up-open>Buy Now</a>
-                </div>
-            </div>
-
-            <!-- €50 Voucher -->
-            <div class="voucher-card">
-                <div class="voucher-image-wrapper">
-                    <img src="images/vouchers/voucher_50.png" alt="€50 Gift Voucher" class="voucher-image">
-                </div>
-                <div class="voucher-body">
-                    <div class="voucher-desc">Ideal for an evening dining celebration</div>
-                    <div class="voucher-benefits">
-                        <div class="benefit-item">✓ No expiry date — valid indefinitely</div>
-                        <div class="benefit-item">✓ Valid for Dine-in or Takeaway</div>
-                        <div class="benefit-item">✓ Instant email delivery with QR code</div>
-                    </div>
-                    <a href="https://giftup.app/place-order/8e00666c-b611-4a5d-85a4-c2d3faf07d1e?value=50" 
-                    target="_blank" 
+                    rel="noopener noreferrer"
                     class="btn btn-primary" 
                     data-gift-up-open>Buy Now</a>
                 </div>
@@ -1844,8 +2611,9 @@
     <section id="reservation">
         <div id="reservation-container">
             <div class="section-header">
-                <h2 class="section-title">Book Your Table</h2>
-                <p class="section-subtitle">Reserve your seat with us online</p>
+                <h2 class="section-title">🎄 Book Your Festive Table</h2>
+                <div class="festive-divider" aria-hidden="true" style="color: var(--gold-light);">❄ ✦ ✨ ✦ ❄</div>
+                <p class="section-subtitle">Reserve your seat for Christmas gatherings, family dinners &amp; festive celebrations</p>
             </div>
             <div class="form-container">
                 <!--
@@ -1910,7 +2678,7 @@
                                     <option value="45">45</option>
                                 </select>
                             </div>
-                            <small id="time-warning" style="color: #ff4d4d; display: none; font-size: 0.8rem; margin-top: 0.25rem;">We open at 16:30. Please adjust your minutes.</small>
+                            <small id="time-warning" style="color: #ffb3b3; display: none; font-size: 0.8rem; margin-top: 0.25rem;">We open at 16:30. Please adjust your minutes.</small>
                         </div>
                     </div>
                     <div class="form-row">
@@ -1945,6 +2713,7 @@
                             <label for="res-occasion">Occasion</label>
                             <select id="res-occasion" name="occasion">
                                 <option value="">Select occasion</option>
+                                <option value="christmas">🎄 Christmas Party / Festive Dining</option>
                                 <option value="birthday">Birthday</option>
                                 <option value="anniversary">Anniversary</option>
                                 <option value="casual">Casual Dining</option>
@@ -1953,7 +2722,7 @@
                     </div>
                     <div class="form-group">
                         <label for="res-special">Special Requests</label>
-                        <textarea id="res-special" name="special_requests" placeholder="Dietary requirements or preferences?" rows="3"></textarea>
+                        <textarea id="res-special" name="special_requests" placeholder="Dietary requirements or festive preferences?" rows="3"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Confirm Reservation</button>
                 </form>
@@ -1965,7 +2734,8 @@
     <section id="contact">
         <div class="section-header">
             <h2 class="section-title">Visit Us</h2>
-            <p class="section-subtitle">We look forward to welcoming you</p>
+            <div class="festive-divider" aria-hidden="true">❄ ✦ 🎄 ✦ ❄</div>
+            <p class="section-subtitle">We look forward to welcoming you this festive season</p>
         </div>
         <div class="contact-grid">
             <div class="contact-card">
@@ -1975,7 +2745,7 @@
             </div>
             <div class="contact-card">
                 <div class="contact-icon">📞</div>
-                <h3>Contact & Hours</h3>
+                <h3>Contact &amp; Hours</h3>
                 <p>
                     +353 (0)21 427 3366<br>
                     Sun - Thu: 4:30 PM - 10:30 PM<br>
@@ -1997,6 +2767,7 @@
 
     <!-- Footer with Facebook and Instagram Icons -->
     <footer>
+        <div class="footer-greeting">🎄 Wishing You a Joyous Christmas &amp; Warm Festive Season! ✨</div>
         <div class="social-links">
             <a href="https://www.facebook.com/BombayPalaceCork" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
                 <i class="fab fa-facebook-f"></i>
@@ -2177,7 +2948,98 @@
             if (dateInput) {
                 dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
             }
+
+            // Live Christmas Voucher Offer Countdown (until 15th December 23:59:59)
+            initChristmasCountdown();
+
+            // Gentle Festive Snowfall Effect
+            initFestiveSnow();
         });
+
+        function initChristmasCountdown() {
+            const countdownEl = document.getElementById('offer-countdown');
+            if (!countdownEl) return;
+
+            function updateCountdown() {
+                const now = new Date();
+                const year = now.getFullYear();
+                const deadline = new Date(year, 11, 15, 23, 59, 59); // December 15
+                const diff = deadline - now;
+
+                if (diff <= 0) {
+                    countdownEl.textContent = "Final festive offer!";
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+                if (days > 0) {
+                    countdownEl.textContent = `${days}d ${hours}h ${mins}m left to buy`;
+                } else {
+                    countdownEl.textContent = `Promo ends today: ${hours}h ${mins}m left!`;
+                }
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 60000);
+        }
+
+        function initFestiveSnow() {
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+            const canvas = document.getElementById('snow-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', function() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const flakeCount = Math.min(55, Math.floor(width / 26));
+            const flakes = Array.from({ length: flakeCount }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                r: Math.random() * 2.6 + 1.1,
+                speedY: Math.random() * 0.85 + 0.35,
+                speedX: Math.random() * 0.5 - 0.25,
+                opacity: Math.random() * 0.45 + 0.25,
+                gold: Math.random() < 0.22
+            }));
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                for (let i = 0; i < flakes.length; i++) {
+                    const f = flakes[i];
+                    ctx.beginPath();
+                    ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+                    ctx.fillStyle = f.gold
+                        ? `rgba(250, 224, 140, ${f.opacity})`
+                        : `rgba(255, 255, 255, ${f.opacity})`;
+                    ctx.fill();
+
+                    f.y += f.speedY;
+                    f.x += f.speedX + Math.sin(f.y * 0.012) * 0.25;
+
+                    if (f.y > height + 5) {
+                        f.y = -5;
+                        f.x = Math.random() * width;
+                    }
+                    if (f.x > width + 5) f.x = -5;
+                    if (f.x < -5) f.x = width + 5;
+                }
+                requestAnimationFrame(draw);
+            }
+
+            draw();
+        }
 
         // Opens the modal popup
         function openReservationModal() {
