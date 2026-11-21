@@ -779,6 +779,236 @@
             transform: scale(1.1);
         }
 
+        .estd-corner-ribbon {
+            position: absolute;
+            bottom: 18px;
+            left: 18px;
+            background: linear-gradient(135deg, rgba(42, 13, 14, 0.92), rgba(127, 16, 25, 0.92));
+            border: 1.5px solid var(--gold);
+            color: var(--gold-light);
+            padding: 0.55rem 1.05rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(6px);
+        }
+
+        .heritage-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            align-self: flex-start;
+            background: rgba(212, 175, 55, 0.14);
+            color: var(--primary-dark);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* 28-Year Wall of Achievements & Awards (Royal Mahogany & Gold) */
+        .heritage-showcase {
+            margin-top: 3rem;
+            background: radial-gradient(circle at top center, #4a181a 0%, #270b0d 68%, #180607 100%);
+            border-radius: 22px;
+            padding: 2.75rem 2.5rem 2.5rem;
+            border: 2px solid rgba(212, 175, 55, 0.7);
+            box-shadow: 0 22px 54px rgba(38, 11, 12, 0.3), inset 0 0 0 1px rgba(250, 224, 140, 0.16);
+            color: #fffaf3;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heritage-showcase-header {
+            text-align: center;
+            margin-bottom: 1.75rem;
+        }
+
+        .heritage-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.42rem 1.15rem;
+            border-radius: 999px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(250, 224, 140, 0.55);
+            color: var(--gold-light);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.85rem;
+        }
+
+        .heritage-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+            font-weight: 700;
+            color: #fff6e0;
+            margin-bottom: 0.45rem;
+            letter-spacing: 0.5px;
+        }
+
+        .heritage-sub {
+            color: rgba(255, 245, 228, 0.82);
+            font-size: 0.96rem;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .heritage-frame-wrap {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2.5px solid rgba(212, 175, 55, 0.72);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+            cursor: zoom-in;
+            background: #1a0708;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .heritage-frame-wrap:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 24px 52px rgba(0, 0, 0, 0.55), 0 0 24px rgba(212, 175, 55, 0.25);
+        }
+
+        .heritage-frame-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .zoom-hint {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            background: rgba(20, 8, 8, 0.84);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.65);
+            padding: 0.45rem 0.95rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            backdrop-filter: blur(6px);
+            pointer-events: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .heritage-frame-wrap:hover .zoom-hint {
+            background: rgba(212, 175, 55, 0.95);
+            color: #1c1412;
+        }
+
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.75rem;
+        }
+
+        .milestone-card {
+            background: rgba(255, 250, 243, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.32);
+            border-top: 3px solid var(--gold);
+            border-radius: 12px;
+            padding: 1.1rem 1rem;
+            text-align: center;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .milestone-card:hover {
+            background: rgba(212, 175, 55, 0.14);
+            transform: translateY(-2px);
+        }
+
+        .milestone-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 900;
+            color: var(--gold-light);
+            line-height: 1.1;
+            margin-bottom: 0.3rem;
+        }
+
+        .milestone-title {
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .milestone-desc {
+            font-size: 0.78rem;
+            color: rgba(255, 245, 228, 0.78);
+            line-height: 1.45;
+        }
+
+        /* Heritage Gallery Click-to-Zoom Lightbox */
+        .heritage-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            background: rgba(12, 6, 6, 0.92);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: zoom-out;
+        }
+
+        .heritage-lightbox.open {
+            display: flex;
+        }
+
+        .heritage-lightbox-inner {
+            position: relative;
+            max-width: 1200px;
+            width: 100%;
+            cursor: default;
+        }
+
+        .heritage-lightbox-inner img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
+            display: block;
+        }
+
+        .heritage-lightbox-close {
+            position: absolute;
+            top: -44px;
+            right: 0;
+            background: var(--gold);
+            color: #1c1412;
+            border: none;
+            border-radius: 999px;
+            padding: 0.45rem 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .heritage-lightbox-caption {
+            text-align: center;
+            color: var(--gold-light);
+            font-size: 0.88rem;
+            margin-top: 0.85rem;
+        }
+
 
         /* ==========================================
            6. GALLERY SECTION
@@ -1564,6 +1794,10 @@
                 gap: 2.5rem;
             }
 
+            .milestone-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
@@ -1632,6 +1866,14 @@
         @media (max-width: 576px) {
             .about-highlights {
                 grid-template-columns: 1fr;
+            }
+
+            .milestone-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .heritage-showcase {
+                padding: 1.75rem 1.15rem;
             }
 
             .about-text h3 {
@@ -1753,23 +1995,25 @@
         <div class="section-header">
             <h2 class="section-title">About Us</h2>
             <div class="festive-divider" aria-hidden="true">❄ ✦ 🎄 ✦ ❄</div>
-            <p class="section-subtitle">Experience the warmth &amp; magic of authentic Indian dining in Cork this festive season</p>
+            <p class="section-subtitle">Proudly serving authentic Indian cuisine in the heart of Cork City for 28 years</p>
         </div>
         
         <div class="about-grid">
             <!-- Left Column: Image -->
             <div class="about-image-wrapper">
-                <img src="images/bg_image.png" alt="Bombay Palace Atmosphere" class="about-image"> <!--onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800';"> -->
+                <img src="images/bg_image.png" alt="Bombay Palace Atmosphere" class="about-image">
+                <div class="estd-corner-ribbon">✦ Est. 1998 · 28 Years in Cork</div>
             </div>
             
             <!-- Right Column: Text & Content -->
             <div class="about-text">
+                <span class="heritage-eyebrow"><i class="fas fa-crown"></i> 28 Years of Culinary Heritage</span>
                 <h3>Culinary Excellence in the Heart of Cork</h3>
                 <p>
-                    Bombay Palace brings the rich, diverse culinary heritage of India straight to Cork City. Our experienced chefs prepare each dish using traditional techniques, freshly ground spice blends, and locally sourced ingredients.
+                    Since 1998, Bombay Palace has brought the rich, diverse culinary heritage of India straight to Cork City. Our experienced chefs prepare each dish using time-honoured techniques, freshly ground spice blends, and locally sourced Irish ingredients.
                 </p>
                 <p>
-                    Whether you are dining in with family, hosting a Christmas gathering, or celebrating a special occasion, we offer an inviting atmosphere filled with warmth and hospitality.
+                    Whether you are dining in with family, hosting a Christmas gathering, or celebrating a milestone occasion, we welcome you with the same warmth and royal hospitality that Cork has loved for nearly three decades.
                 </p>
 
                 <!-- Feature Highlights -->
@@ -1779,9 +2023,46 @@
                         <span class="highlight-desc">Crafted with hand-selected Indian spices and fresh ingredients.</span>
                     </div>
                     <div class="highlight-item">
-                        <span class="highlight-title">🎄 Festive Hospitality</span>
-                        <span class="highlight-desc">An inviting ambiance perfect for family gatherings &amp; Christmas celebrations.</span>
+                        <span class="highlight-title">🏆 28 Years of Trust</span>
+                        <span class="highlight-desc">Award-winning dining &amp; Cork press favourite since 1998.</span>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 28-Year Wall of Achievements & Awards (Royal Mahogany & Gold) -->
+        <div class="heritage-showcase">
+            <div class="heritage-showcase-header">
+                <div class="heritage-pill"><i class="fas fa-award"></i> Estd. 1998 · 28 Years of Recognition</div>
+                <h3 class="heritage-heading">A Legacy Celebrated Across Generations</h3>
+                <p class="heritage-sub">From local press acclaim in the late ’90s to Ireland’s top hospitality awards today, thank you Cork for 28 unforgettable years.</p>
+            </div>
+
+            <div class="heritage-frame-wrap" onclick="openHeritageLightbox()">
+                <img src="images/heritage_gallery.jpg" alt="Bombay Palace Cork 28 Years Wall of Fame - Press Clippings and Awards" loading="lazy">
+                <span class="zoom-hint"><i class="fas fa-search-plus"></i> Click to view clippings up close</span>
+            </div>
+
+            <div class="milestone-grid">
+                <div class="milestone-card">
+                    <div class="milestone-year">1998</div>
+                    <div class="milestone-title">Founded in Cork City</div>
+                    <div class="milestone-desc">Opening our doors as the “Gateway to Superb Indian Cuisine”.</div>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-year">1999–2001</div>
+                    <div class="milestone-title">Evening Echo Features</div>
+                    <div class="milestone-desc">Celebrated in “Munster Cooks Up Five Hits” &amp; “Cork Claims Curry Crown”.</div>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-year">2022</div>
+                    <div class="milestone-title">Best of Ireland</div>
+                    <div class="milestone-desc">IB4UD Certificate of Tourism Excellence awarded to Bombay Palace.</div>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-year">2024</div>
+                    <div class="milestone-title">Restaurant Guru Award</div>
+                    <div class="milestone-desc">Honoured for Excellent Takeaway Food &amp; guest satisfaction.</div>
                 </div>
             </div>
         </div>
@@ -2816,6 +3097,15 @@
         </div>
     </div>
 
+    <!-- Heritage Gallery Click-to-Zoom Lightbox -->
+    <div id="heritageLightbox" class="heritage-lightbox" onclick="closeHeritageLightbox()">
+        <div class="heritage-lightbox-inner" onclick="event.stopPropagation()">
+            <button type="button" class="heritage-lightbox-close" onclick="closeHeritageLightbox()">✕ Close</button>
+            <img src="images/heritage_gallery.jpg" alt="Bombay Palace Cork 28 Years Wall of Fame Full View">
+            <p class="heritage-lightbox-caption">Bombay Palace Cork — 28 Years of Press Features, Tourism Excellence &amp; Dining Awards (Est. 1998)</p>
+        </div>
+    </div>
+
     <script>
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
@@ -3096,6 +3386,23 @@
 
         // Safely initializes the menu to show only appetizers and highlight the tab
         filterMenu('appetizers');
+
+        // Heritage Gallery Lightbox Controls
+        function openHeritageLightbox() {
+            const lb = document.getElementById('heritageLightbox');
+            if (lb) lb.classList.add('open');
+        }
+
+        function closeHeritageLightbox() {
+            const lb = document.getElementById('heritageLightbox');
+            if (lb) lb.classList.remove('open');
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeHeritageLightbox();
+            }
+        });
     </script>
 </body>
 </html>
