@@ -1,0 +1,5 @@
+# Print-only restaurant table cards (not part of the website)
+table_cards/
+
+# macOS system files
+.DS_Store
